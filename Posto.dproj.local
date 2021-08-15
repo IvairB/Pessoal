@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/08/13 09:15:31.000.270,D:\Posto\MDIAPP.dproj=D:\Posto\Posto.dproj</Transaction>
+    <Transaction>2021/08/13 09:15:50.000.637,D:\Posto\Main.pas=D:\Posto\unPrincipal.pas</Transaction>
+    <Transaction>2021/08/13 09:15:50.000.637,D:\Posto\Main.dfm=D:\Posto\unPrincipal.dfm</Transaction>
+    <Transaction>2021/08/13 11:19:38.000.680,=D:\Posto\Unit1.pas</Transaction>
+    <Transaction>2021/08/13 11:19:59.000.440,D:\Posto\Unit1.dfm=D:\Posto\unDM.dfm</Transaction>
+    <Transaction>2021/08/13 11:19:59.000.440,D:\Posto\Unit1.pas=D:\Posto\unDM.pas</Transaction>
+    <Transaction>2021/08/13 11:52:22.079,=D:\Posto\Unit1.pas</Transaction>
+    <Transaction>2021/08/13 13:38:54.238,D:\Posto\unCadastros.dfm=D:\Posto\Unit1.dfm</Transaction>
+    <Transaction>2021/08/13 13:38:54.238,D:\Posto\unCadastros.pas=D:\Posto\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

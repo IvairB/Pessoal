@@ -1,0 +1,52 @@
+unit unDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Phys.ADSDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.ADS, FireDAC.Comp.UI;
+
+type
+  TDM = class(TDataModule)
+    Con: TFDConnection;
+    WaitCursor: TFDGUIxWaitCursor;
+    DriverLink: TFDPhysADSDriverLink;
+    qryUsuarios: TFDQuery;
+    qryUsuariosID_USUARIO: TIntegerField;
+    qryUsuariosNOME: TStringField;
+    qryUsuariosUSUARIO: TStringField;
+    qryUsuariosSENHA: TStringField;
+    qryUsuariosATIVO: TStringField;
+    updUsuarios: TFDUpdateSQL;
+    dsUsuarios: TDataSource;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDM.DataModuleCreate(Sender: TObject);
+begin
+  with DM.Con do
+  begin
+    if Connected then
+      Connected := False;
+    Connected := True;
+  end;
+end;
+
+end.

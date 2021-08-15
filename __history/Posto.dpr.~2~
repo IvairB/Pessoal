@@ -1,0 +1,16 @@
+program Posto;
+
+uses
+  Forms,
+  unPrincipal in 'unPrincipal.pas' {frmPrincipal},
+  CHILDWIN in 'CHILDWIN.PAS' {MDIChild},
+  about in 'about.pas' {AboutBox};
+
+{$R *.RES}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TAboutBox, AboutBox);
+  Application.Run;
+end.

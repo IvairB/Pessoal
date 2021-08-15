@@ -1,0 +1,71 @@
+object DM: TDM
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 476
+  Width = 758
+  object Con: TFDConnection
+    Params.Strings = (
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Database=D:\Bancos de Dados\POSTO.FDB'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 32
+    Top = 16
+  end
+  object WaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 96
+    Top = 16
+  end
+  object DriverLink: TFDPhysADSDriverLink
+    Left = 160
+    Top = 16
+  end
+  object qryUsuarios: TFDQuery
+    Connection = Con
+    UpdateObject = updUsuarios
+    SQL.Strings = (
+      'select * from tb_usuarios')
+    Left = 228
+    Top = 16
+    object qryUsuariosID_USUARIO: TIntegerField
+      FieldName = 'ID_USUARIO'
+      Origin = 'ID_USUARIO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = True
+      Required = True
+    end
+    object qryUsuariosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 60
+    end
+    object qryUsuariosUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Origin = 'USUARIO'
+      Required = True
+      Size = 60
+    end
+    object qryUsuariosSENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Required = True
+      Size = 60
+    end
+    object qryUsuariosATIVO: TStringField
+      FieldName = 'ATIVO'
+      Origin = 'ATIVO'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object updUsuarios: TFDUpdateSQL
+    Connection = Con
+    Left = 304
+    Top = 16
+  end
+end
