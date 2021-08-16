@@ -24,27 +24,12 @@ type
     updUsuarios: TFDUpdateSQL;
     dsUsuarios: TDataSource;
     qryCombustiveis: TFDQuery;
-    IntegerField1: TIntegerField;
-    StringField1: TStringField;
-    StringField2: TStringField;
-    StringField3: TStringField;
-    StringField4: TStringField;
     updCombustiveis: TFDUpdateSQL;
     dsCombustiveis: TDataSource;
     qryTanques: TFDQuery;
-    IntegerField2: TIntegerField;
-    StringField5: TStringField;
-    StringField6: TStringField;
-    StringField7: TStringField;
-    StringField8: TStringField;
     updTanques: TFDUpdateSQL;
     dsTanques: TDataSource;
     qryBombas: TFDQuery;
-    IntegerField3: TIntegerField;
-    StringField9: TStringField;
-    StringField10: TStringField;
-    StringField11: TStringField;
-    StringField12: TStringField;
     updBombas: TFDUpdateSQL;
     dsBombas: TDataSource;
     qryAbastecimentos: TFDQuery;
@@ -55,6 +40,19 @@ type
     StringField16: TStringField;
     updAbastecimentos: TFDUpdateSQL;
     dsAbastecimentos: TDataSource;
+    qryBombasID_BOMBA: TIntegerField;
+    qryBombasNUMERO: TIntegerField;
+    qryBombasID_TANQUE: TIntegerField;
+    qryTanquesID_TANQUE: TIntegerField;
+    qryTanquesNUMERO: TIntegerField;
+    qryTanquesID_COMBUSTIVEL: TIntegerField;
+    qryTanquesCAPACIDADE: TBCDField;
+    qryCombustiveisID_COMBUSTIVEL: TIntegerField;
+    qryCombustiveisTIPO: TStringField;
+    qryCombustiveisVALOR_COMPRA: TBCDField;
+    qryCombustiveisVALOR_VENDA: TBCDField;
+    qryCombustiveisPERC_IMPOSTO: TBCDField;
+    qryTanquesCOMBUSTIVEL: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -65,6 +63,7 @@ type
     procedure AbrirBombas;
     procedure AbrirCombustiveis;
     procedure AbrirAbastecimento;
+    function Acesso(pUsuario, pSenha : String) : Boolean;
   end;
 
 var
@@ -114,7 +113,20 @@ end;
 
 procedure TDM.AbrirUsuarios;
 begin
+  with qryUsuarios do
+  begin
+    Close;
+    Open;
+  end;
+end;
 
+function TDM.Acesso(pUsuario, pSenha: String): Boolean;
+begin
+  Result := False;
+  AbrirUsuarios;
+  if (UpperCase(qryUsuariosNOME.AsString) = UpperCase(pUsuario)) and
+     (UpperCase(qryUsuariosSENHA.AsString) = UpperCase(pSenha)) then
+     Result := True;
 end;
 
 procedure TDM.DataModuleCreate(Sender: TObject);

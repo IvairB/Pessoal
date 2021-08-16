@@ -6,8 +6,8 @@ object DM: TDM
   object Con: TFDConnection
     Params.Strings = (
       'User_Name=sysdba'
-      'Password=masterkey'
-      'Database=D:\Bancos de Dados\POSTO.FDB'
+      'Password=As#bank.'
+      'Database=D:\Posto\POSTO.FDB'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
@@ -24,7 +24,6 @@ object DM: TDM
     Top = 16
   end
   object qryUsuarios: TFDQuery
-    Active = True
     Connection = Con
     UpdateObject = updUsuarios
     SQL.Strings = (
@@ -75,44 +74,41 @@ object DM: TDM
     Top = 16
   end
   object qryCombustiveis: TFDQuery
-    Active = True
     Connection = Con
     UpdateObject = updCombustiveis
     SQL.Strings = (
-      'select * from tb_usuarios')
+      'select * from tb_combustiveis')
     Left = 228
     Top = 64
-    object IntegerField1: TIntegerField
-      FieldName = 'ID_USUARIO'
-      Origin = 'ID_USUARIO'
+    object qryCombustiveisID_COMBUSTIVEL: TIntegerField
+      FieldName = 'ID_COMBUSTIVEL'
+      Origin = 'ID_COMBUSTIVEL'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
       Required = True
     end
-    object StringField1: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
+    object qryCombustiveisTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
       Required = True
       Size = 60
     end
-    object StringField2: TStringField
-      FieldName = 'USUARIO'
-      Origin = 'USUARIO'
+    object qryCombustiveisVALOR_COMPRA: TBCDField
+      FieldName = 'VALOR_COMPRA'
+      Origin = 'VALOR_COMPRA'
       Required = True
-      Size = 60
+      Precision = 18
     end
-    object StringField3: TStringField
-      FieldName = 'SENHA'
-      Origin = 'SENHA'
+    object qryCombustiveisVALOR_VENDA: TBCDField
+      FieldName = 'VALOR_VENDA'
+      Origin = 'VALOR_VENDA'
       Required = True
-      Size = 60
+      Precision = 18
     end
-    object StringField4: TStringField
-      FieldName = 'ATIVO'
-      Origin = 'ATIVO'
+    object qryCombustiveisPERC_IMPOSTO: TBCDField
+      FieldName = 'PERC_IMPOSTO'
+      Origin = 'PERC_IMPOSTO'
       Required = True
-      FixedChar = True
-      Size = 1
+      Precision = 18
     end
   end
   object updCombustiveis: TFDUpdateSQL
@@ -126,44 +122,44 @@ object DM: TDM
     Top = 64
   end
   object qryTanques: TFDQuery
-    Active = True
     Connection = Con
     UpdateObject = updTanques
     SQL.Strings = (
-      'select * from tb_usuarios')
+      'select t.*, '
+      '(select tipo from tb_combustiveis c '
+      'where c.id_combustivel = t.id_combustivel) Combustivel'
+      ' from tb_tanques t')
     Left = 228
     Top = 112
-    object IntegerField2: TIntegerField
-      FieldName = 'ID_USUARIO'
-      Origin = 'ID_USUARIO'
+    object qryTanquesID_TANQUE: TIntegerField
+      FieldName = 'ID_TANQUE'
+      Origin = 'ID_TANQUE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryTanquesNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Required = True
+    end
+    object qryTanquesID_COMBUSTIVEL: TIntegerField
+      FieldName = 'ID_COMBUSTIVEL'
+      Origin = 'ID_COMBUSTIVEL'
+      Required = True
+    end
+    object qryTanquesCAPACIDADE: TBCDField
+      FieldName = 'CAPACIDADE'
+      Origin = 'CAPACIDADE'
+      Required = True
+      Precision = 18
+    end
+    object qryTanquesCOMBUSTIVEL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMBUSTIVEL'
+      Origin = 'TIPO'
+      ProviderFlags = []
       ReadOnly = True
-      Required = True
-    end
-    object StringField5: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
       Size = 60
-    end
-    object StringField6: TStringField
-      FieldName = 'USUARIO'
-      Origin = 'USUARIO'
-      Required = True
-      Size = 60
-    end
-    object StringField7: TStringField
-      FieldName = 'SENHA'
-      Origin = 'SENHA'
-      Required = True
-      Size = 60
-    end
-    object StringField8: TStringField
-      FieldName = 'ATIVO'
-      Origin = 'ATIVO'
-      Required = True
-      FixedChar = True
-      Size = 1
     end
   end
   object updTanques: TFDUpdateSQL
@@ -177,44 +173,27 @@ object DM: TDM
     Top = 112
   end
   object qryBombas: TFDQuery
-    Active = True
     Connection = Con
     UpdateObject = updBombas
     SQL.Strings = (
-      'select * from tb_usuarios')
+      'select * from tb_bombas')
     Left = 228
     Top = 168
-    object IntegerField3: TIntegerField
-      FieldName = 'ID_USUARIO'
-      Origin = 'ID_USUARIO'
+    object qryBombasID_BOMBA: TIntegerField
+      FieldName = 'ID_BOMBA'
+      Origin = 'ID_BOMBA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
       Required = True
     end
-    object StringField9: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
+    object qryBombasNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
       Required = True
-      Size = 60
     end
-    object StringField10: TStringField
-      FieldName = 'USUARIO'
-      Origin = 'USUARIO'
+    object qryBombasID_TANQUE: TIntegerField
+      FieldName = 'ID_TANQUE'
+      Origin = 'ID_TANQUE'
       Required = True
-      Size = 60
-    end
-    object StringField11: TStringField
-      FieldName = 'SENHA'
-      Origin = 'SENHA'
-      Required = True
-      Size = 60
-    end
-    object StringField12: TStringField
-      FieldName = 'ATIVO'
-      Origin = 'ATIVO'
-      Required = True
-      FixedChar = True
-      Size = 1
     end
   end
   object updBombas: TFDUpdateSQL
@@ -228,7 +207,6 @@ object DM: TDM
     Top = 168
   end
   object qryAbastecimentos: TFDQuery
-    Active = True
     Connection = Con
     UpdateObject = updAbastecimentos
     SQL.Strings = (

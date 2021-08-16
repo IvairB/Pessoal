@@ -12,7 +12,6 @@ type
     MainMenu1: TMainMenu;
     imnCadastro: TMenuItem;
     imnCadUsuario: TMenuItem;
-    imnCadTanque: TMenuItem;
     imnCadBomba: TMenuItem;
     imnAjuda: TMenuItem;
     imnSobre: TMenuItem;
@@ -22,21 +21,11 @@ type
     imnGeral: TMenuItem;
     StatusBar: TStatusBar;
     ActionList1: TActionList;
-    EditCut1: TEditCut;
-    EditCopy1: TEditCopy;
-    EditPaste1: TEditPaste;
-    FileNew1: TAction;
-    FileSave1: TAction;
-    FileExit1: TAction;
-    FileOpen1: TAction;
-    FileSaveAs1: TAction;
-    WindowCascade1: TWindowCascade;
-    WindowTileHorizontal1: TWindowTileHorizontal;
-    WindowArrangeAll1: TWindowArrange;
-    WindowMinimizeAll1: TWindowMinimizeAll;
-    HelpAbout1: TAction;
-    FileClose1: TWindowClose;
-    WindowTileVertical1: TWindowTileVertical;
+    actRelatorioGeral: TEditCut;
+    actUsuario: TAction;
+    actBomba: TAction;
+    actCombustivel: TAction;
+    actSobrePosto: TAction;
     ToolBar2: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -57,18 +46,25 @@ type
     btEntrar: TBitBtn;
     imnSair: TMenuItem;
     edSenha: TEdit;
-    procedure FileNew1Execute(Sender: TObject);
-    procedure FileOpen1Execute(Sender: TObject);
+    Outro1: TMenuItem;
+    actTanque: TAction;
+    procedure actUsuarioExecute(Sender: TObject);
+    procedure actCombustivelExecute(Sender: TObject);
     procedure btEntrarClick(Sender: TObject);
     procedure edUsuarioKeyPress(Sender: TObject; var Key: Char);
     procedure edSenhaKeyPress(Sender: TObject; var Key: Char);
     procedure imnSairClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure actTanqueExecute(Sender: TObject);
+    procedure actBombaExecute(Sender: TObject);
+    procedure actSobrePostoExecute(Sender: TObject);
+    procedure actRelatorioGeralExecute(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure imnSobreClick(Sender: TObject);
   private
     { Private declarations }
     procedure CreateMDIChild(const Name: string);
     procedure MenuVisivel(pVisivel : Boolean);
+    procedure CriaFormCadastro(pAba : String);
   public
     { Public declarations }
   end;
@@ -80,12 +76,20 @@ implementation
 
 {$R *.dfm}
 
-uses CHILDWIN, About, unCadastros;
+uses CHILDWIN, About, unCadastros, unDM;
 
 procedure TfrmPrincipal.btEntrarClick(Sender: TObject);
 begin
-  pnAcesso.Visible := False;
-  MenuVisivel(True);
+  if dm.Acesso(edUsuario.Text, edSenha.Text) then
+  begin
+    pnAcesso.Visible := False;
+    MenuVisivel(True);
+  end
+  else
+  begin
+    ShowMessage('Usuário/Senha Incorretos');
+    edUsuario.SetFocus;
+  end;
 end;
 
 procedure TfrmPrincipal.CreateMDIChild(const Name: string);
@@ -96,6 +100,23 @@ begin
   Child := TMDIChild.Create(Application);
   Child.Caption := Name;
   if FileExists(Name) then Child.Memo1.Lines.LoadFromFile(Name);
+end;
+
+procedure TfrmPrincipal.CriaFormCadastro(pAba : String);
+begin
+  if frmCadastros = nil then
+  begin
+    frmCadastros := TfrmCadastros.Create(Self);
+    frmCadastros.Show;
+    if pAba = 'U' then
+      frmCadastros.AtivaTab(frmCadastros.tsUsuarios)
+    else if pAba = 'C'  then
+      frmCadastros.AtivaTab(frmCadastros.tsCombustiveis)
+    else if pAba = 'T'  then
+      frmCadastros.AtivaTab(frmCadastros.tsTanques)
+    else if pAba = 'B'  then
+      frmCadastros.AtivaTab(frmCadastros.tsBombas);
+  end;
 end;
 
 procedure TfrmPrincipal.edSenhaKeyPress(Sender: TObject; var Key: Char);
@@ -110,36 +131,50 @@ begin
     edSenha.SetFocus;
 end;
 
-procedure TfrmPrincipal.FileNew1Execute(Sender: TObject);
+procedure TfrmPrincipal.actUsuarioExecute(Sender: TObject);
 begin
-  if frmCadastros = nil then
-  begin
-    frmCadastros := TfrmCadastros.Create(Self);
-    frmCadastros.Show;
-    frmCadastros.AtivaTab(0);
-  end;
+  CriaFormCadastro('U');
 end;
 
-procedure TfrmPrincipal.FileOpen1Execute(Sender: TObject);
+procedure TfrmPrincipal.actCombustivelExecute(Sender: TObject);
 begin
-  if OpenDialog.Execute then
-    CreateMDIChild(OpenDialog.FileName);
+  CriaFormCadastro('C');
+end;
+
+procedure TfrmPrincipal.actRelatorioGeralExecute(Sender: TObject);
+begin
+  //
+end;
+
+procedure TfrmPrincipal.actTanqueExecute(Sender: TObject);
+begin
+  CriaFormCadastro('T');
+end;
+
+procedure TfrmPrincipal.actBombaExecute(Sender: TObject);
+begin
+  CriaFormCadastro('B');
 end;
 
 procedure TfrmPrincipal.FormActivate(Sender: TObject);
 begin
+  if pnAcesso.Visible then
+    edUsuario.SetFocus;
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
   MenuVisivel(False);
-  edUsuario.SetFocus;
+end;
+
+procedure TfrmPrincipal.actSobrePostoExecute(Sender: TObject);
+begin
+  AboutBox.Show;
 end;
 
 procedure TfrmPrincipal.imnSairClick(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TfrmPrincipal.imnSobreClick(Sender: TObject);
-begin
-  AboutBox.ShowModal;
 end;
 
 procedure TfrmPrincipal.MenuVisivel(pVisivel: Boolean);

@@ -17,6 +17,7 @@ object frmPrincipal: TfrmPrincipal
   OldCreateOrder = False
   Position = poDefault
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object StatusBar: TStatusBar
@@ -50,17 +51,17 @@ object frmPrincipal: TfrmPrincipal
     object ToolButton9: TToolButton
       Left = 5
       Top = 0
-      Action = FileNew1
+      Action = actUsuario
     end
     object ToolButton1: TToolButton
       Left = 28
       Top = 0
-      Action = FileOpen1
+      Action = actCombustivel
     end
     object ToolButton2: TToolButton
       Left = 51
       Top = 0
-      Action = FileSave1
+      Action = actBomba
     end
     object ToolButton3: TToolButton
       Left = 74
@@ -73,17 +74,21 @@ object frmPrincipal: TfrmPrincipal
     object ToolButton4: TToolButton
       Left = 82
       Top = 0
-      Action = EditCut1
+      Action = actRelatorioGeral
     end
     object ToolButton5: TToolButton
       Left = 105
       Top = 0
-      Action = EditCopy1
+      Hint = 'Copy|Copies the selection and puts it on the Clipboard'
+      Caption = '&Copy'
+      ImageIndex = 1
     end
     object ToolButton6: TToolButton
       Left = 128
       Top = 0
-      Action = EditPaste1
+      Hint = 'Paste|Inserts Clipboard contents'
+      Caption = '&Paste'
+      ImageIndex = 2
     end
     object ToolButton7: TToolButton
       Left = 151
@@ -96,17 +101,23 @@ object frmPrincipal: TfrmPrincipal
     object ToolButton8: TToolButton
       Left = 159
       Top = 0
-      Action = WindowCascade1
+      Hint = 'Cascade'
+      Caption = '&Cascade'
+      ImageIndex = 17
     end
     object ToolButton10: TToolButton
       Left = 182
       Top = 0
-      Action = WindowTileHorizontal1
+      Hint = 'Tile Horizontally'
+      Caption = 'Tile &Horizontally'
+      ImageIndex = 15
     end
     object ToolButton11: TToolButton
       Left = 205
       Top = 0
-      Action = WindowTileVertical1
+      Hint = 'Tile Vertically'
+      Caption = 'Tile &Vertically'
+      ImageIndex = 16
     end
   end
   object pnAcesso: TPanel
@@ -149,16 +160,16 @@ object frmPrincipal: TfrmPrincipal
       Width = 75
       Height = 25
       Caption = 'Entrar'
-      TabOrder = 1
+      TabOrder = 2
       OnClick = btEntrarClick
     end
     object edSenha: TEdit
       Left = 105
       Top = 124
-      Width = 121
+      Width = 182
       Height = 21
       PasswordChar = '*'
-      TabOrder = 2
+      TabOrder = 1
       OnKeyPress = edSenhaKeyPress
     end
   end
@@ -170,27 +181,17 @@ object frmPrincipal: TfrmPrincipal
       Caption = '&Cadastros'
       Hint = 'Cadastros'
       object imnCadUsuario: TMenuItem
-        Action = FileNew1
-        Caption = '&Usu'#225'rio'
+        Action = actUsuario
         Hint = 'Cadastro|Usu'#225'rio'
-        ShortCut = 16469
-      end
-      object imnCadTanque: TMenuItem
-        Action = FileOpen1
-        Caption = '&Tanque'
-        Hint = 'Cadastro|Tanque'
-        ShortCut = 16468
-      end
-      object imnCadBomba: TMenuItem
-        Action = FileClose1
-        Caption = '&Bomba'
-        Hint = 'Cadastro|Bomba'
-        ShortCut = 16450
       end
       object imnCadCombustivel: TMenuItem
-        Action = FileSave1
-        Caption = '&Combust'#237'vel'
-        Hint = 'Cadastro|Combust'#237'vel'
+        Action = actCombustivel
+      end
+      object Outro1: TMenuItem
+        Action = actTanque
+      end
+      object imnCadBomba: TMenuItem
+        Action = actBomba
       end
     end
     object imnRelatorios: TMenuItem
@@ -198,7 +199,7 @@ object frmPrincipal: TfrmPrincipal
       Hint = 'Relat'#243'rios'
       Visible = False
       object imnGeral: TMenuItem
-        Action = EditCut1
+        Action = actRelatorioGeral
         Caption = '&Geral'
         Hint = 'Relat'#243'rios|Geral'
         ShortCut = 16455
@@ -208,9 +209,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = '&Ajuda'
       Hint = 'Sobre'
       object imnSobre: TMenuItem
-        Action = HelpAbout1
-        Caption = '&Sobre Posto'
-        OnClick = imnSobreClick
+        Action = actSobrePosto
       end
     end
     object imnSair: TMenuItem
@@ -227,106 +226,53 @@ object frmPrincipal: TfrmPrincipal
     Images = ImageList1
     Left = 72
     Top = 200
-    object FileNew1: TAction
-      Category = 'File'
-      Caption = '&New'
-      Hint = 'New|Create a new file'
-      ImageIndex = 6
-      ShortCut = 16462
-      OnExecute = FileNew1Execute
+    object actUsuario: TAction
+      Category = 'Cadastro'
+      Caption = '&Usu'#225'rio'
+      Hint = 'Cadastro|Usu'#225'rios'
+      ShortCut = 16469
+      OnExecute = actUsuarioExecute
     end
-    object FileOpen1: TAction
-      Category = 'File'
-      Caption = '&Open'
-      Hint = 'Open|Open a file'
-      ImageIndex = 7
-      ShortCut = 16463
-      OnExecute = FileOpen1Execute
+    object actCombustivel: TAction
+      Category = 'Cadastro'
+      Caption = '&Combust'#237'vel'
+      Hint = 'Cadastro|Cambust'#237'vel'
+      ShortCut = 16451
+      OnExecute = actCombustivelExecute
     end
-    object FileClose1: TWindowClose
-      Category = 'File'
-      Caption = '&Close'
-      Hint = 'Close|Close current file'
+    object actTanque: TAction
+      Category = 'Cadastro'
+      Caption = '&Tanque'
+      ShortCut = 16468
+      OnExecute = actTanqueExecute
     end
-    object FileSave1: TAction
-      Category = 'File'
-      Caption = '&Save'
-      Hint = 'Save|Save current file'
-      ImageIndex = 8
-      ShortCut = 16467
+    object actBomba: TAction
+      Category = 'Cadastro'
+      Caption = '&Bomba'
+      Hint = 'Cadastro|Bomba'
+      ShortCut = 16450
+      OnExecute = actBombaExecute
     end
-    object FileSaveAs1: TAction
-      Category = 'File'
-      Caption = 'Save &As...'
-      Hint = 'Save As|Save current file with different name'
-    end
-    object FileExit1: TAction
-      Category = 'File'
-      Caption = 'E&xit'
-      Hint = 'Exit|Exit application'
-    end
-    object EditCut1: TEditCut
-      Category = 'Edit'
-      Caption = 'Cu&t'
-      Hint = 'Cut|Cuts the selection and puts it on the Clipboard'
+    object actRelatorioGeral: TEditCut
+      Category = 'Relatorio'
+      Caption = '&Relat'#243'rios'
+      Hint = 'Relat'#243'ios|Geral'
       ImageIndex = 0
       ShortCut = 16472
+      OnExecute = actRelatorioGeralExecute
     end
-    object EditCopy1: TEditCopy
-      Category = 'Edit'
-      Caption = '&Copy'
-      Hint = 'Copy|Copies the selection and puts it on the Clipboard'
-      ImageIndex = 1
-      ShortCut = 16451
-    end
-    object EditPaste1: TEditPaste
-      Category = 'Edit'
-      Caption = '&Paste'
-      Hint = 'Paste|Inserts Clipboard contents'
-      ImageIndex = 2
-      ShortCut = 16470
-    end
-    object WindowCascade1: TWindowCascade
-      Category = 'Window'
-      Caption = '&Cascade'
-      Hint = 'Cascade'
-      ImageIndex = 17
-    end
-    object WindowTileHorizontal1: TWindowTileHorizontal
-      Category = 'Window'
-      Caption = 'Tile &Horizontally'
-      Hint = 'Tile Horizontally'
-      ImageIndex = 15
-    end
-    object WindowTileVertical1: TWindowTileVertical
-      Category = 'Window'
-      Caption = 'Tile &Vertically'
-      Hint = 'Tile Vertically'
-      ImageIndex = 16
-    end
-    object WindowMinimizeAll1: TWindowMinimizeAll
-      Category = 'Window'
-      Caption = '&Minimize All'
-      Hint = 'Minimize All'
-    end
-    object WindowArrangeAll1: TWindowArrange
-      Category = 'Window'
-      Caption = '&Arrange All'
-      Hint = 'Arrange All'
-    end
-    object HelpAbout1: TAction
-      Category = 'Help'
-      Caption = '&About...'
-      Hint = 
-        'About|Displays program information, version number, and copyrigh' +
-        't'
+    object actSobrePosto: TAction
+      Category = 'Ajuda'
+      Caption = '&Sobre Posto'
+      Hint = 'Ajuda|Sobre Posto'
+      OnExecute = actSobrePostoExecute
     end
   end
   object ImageList1: TImageList
     Left = 104
     Top = 200
     Bitmap = {
-      494C010112001400100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010112001400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

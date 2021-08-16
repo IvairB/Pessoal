@@ -3,7 +3,7 @@ object AboutBox: TAboutBox
   Top = 127
   ActiveControl = OKButton
   BorderStyle = bsDialog
-  Caption = 'About'
+  Caption = 'Sobre'
   ClientHeight = 218
   ClientWidth = 298
   Color = clBtnFace
