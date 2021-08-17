@@ -23,9 +23,6 @@ type
     qryUsuariosATIVO: TStringField;
     updUsuarios: TFDUpdateSQL;
     dsUsuarios: TDataSource;
-    qryCombustiveis: TFDQuery;
-    updCombustiveis: TFDUpdateSQL;
-    dsCombustiveis: TDataSource;
     qryTanques: TFDQuery;
     updTanques: TFDUpdateSQL;
     dsTanques: TDataSource;
@@ -33,11 +30,6 @@ type
     updBombas: TFDUpdateSQL;
     dsBombas: TDataSource;
     qryAbastecimentos: TFDQuery;
-    IntegerField4: TIntegerField;
-    StringField13: TStringField;
-    StringField14: TStringField;
-    StringField15: TStringField;
-    StringField16: TStringField;
     updAbastecimentos: TFDUpdateSQL;
     dsAbastecimentos: TDataSource;
     qryBombasID_BOMBA: TIntegerField;
@@ -47,23 +39,39 @@ type
     qryTanquesNUMERO: TIntegerField;
     qryTanquesID_COMBUSTIVEL: TIntegerField;
     qryTanquesCAPACIDADE: TBCDField;
+    qryAbastecimentosID_ABASTECIMENTO: TIntegerField;
+    qryAbastecimentosID_BOMBA: TIntegerField;
+    qryAbastecimentosID_USUARIO: TIntegerField;
+    qryAbastecimentosVALOR_LIQUIDO: TBCDField;
+    qryAbastecimentosLITROS: TBCDField;
+    qryAbastecimentosDATA: TDateField;
+    qryAbastecimentosHORA: TTimeField;
+    qryAbastecimentosVALOR_IMPOSTO: TBCDField;
+    qryAbastecimentosVALOR_TOTAL: TBCDField;
+    qryCombustiveis: TFDQuery;
+    dsCombustiveis: TDataSource;
+    updCombustiveis: TFDUpdateSQL;
     qryCombustiveisID_COMBUSTIVEL: TIntegerField;
     qryCombustiveisTIPO: TStringField;
     qryCombustiveisVALOR_COMPRA: TBCDField;
     qryCombustiveisVALOR_VENDA: TBCDField;
     qryCombustiveisPERC_IMPOSTO: TBCDField;
     qryTanquesCOMBUSTIVEL: TStringField;
+    qryBombasTANQUE: TIntegerField;
+    qryAbastecimentosUSUARIO: TStringField;
+    qryAbastecimentosBOMBA: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    vgIdUsuario : Integer;
     procedure AbrirUsuarios;
     procedure AbrirTanques;
     procedure AbrirBombas;
     procedure AbrirCombustiveis;
     procedure AbrirAbastecimento;
-    function Acesso(pUsuario, pSenha : String) : Boolean;
+    function Acesso(pUsuario, pSenha : String) : String;
   end;
 
 var
@@ -120,13 +128,23 @@ begin
   end;
 end;
 
-function TDM.Acesso(pUsuario, pSenha: String): Boolean;
+function TDM.Acesso(pUsuario, pSenha: String): String;
 begin
-  Result := False;
+  Result := 'SEM ACESSO';
   AbrirUsuarios;
-  if (UpperCase(qryUsuariosNOME.AsString) = UpperCase(pUsuario)) and
-     (UpperCase(qryUsuariosSENHA.AsString) = UpperCase(pSenha)) then
-     Result := True;
+  if qryUsuarios.Locate(UpperCase(qryUsuariosNOME.AsString), UpperCase(pUsuario)) then
+    if (UpperCase(qryUsuariosSENHA.AsString) = UpperCase(pSenha)) then
+      if (UpperCase(qryUsuariosATIVO.AsString) = UpperCase('S')) then
+      begin
+        Result := '';
+        vgIdUsuario := qryUsuariosID_USUARIO.AsInteger;
+      end
+      else
+        Result := 'Usuário inativo.'
+    else
+      Result := 'Senha Incorreta.'
+  else
+    Result := 'Usuário não existe.';
 end;
 
 procedure TDM.DataModuleCreate(Sender: TObject);

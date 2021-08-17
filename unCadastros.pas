@@ -24,11 +24,10 @@ type
     lblUsuario: TLabel;
     tsCombustiveis: TTabSheet;
     tsBombas: TTabSheet;
-    nvCombustiveis: TDBNavigator;
     lblIDCombustiveis: TLabel;
     edIDCombustiveis: TDBEdit;
     lblTipoCombustiveis: TLabel;
-    edNomeCombustiveis: TDBEdit;
+    edTipoCombustiveis: TDBEdit;
     grdCombustiveis: TDBGrid;
     grdUsuarios: TDBGrid;
     lblPercImposto: TLabel;
@@ -39,19 +38,44 @@ type
     edValorVenda: TDBEdit;
     lblIdTanques: TLabel;
     lblNumero: TLabel;
-    DBNavigator1: TDBNavigator;
+    nvTanques: TDBNavigator;
     edIdTanques: TDBEdit;
-    edNumero: TDBEdit;
-    DBGrid1: TDBGrid;
+    edNumeroTanques: TDBEdit;
+    grdTanques: TDBGrid;
     lblCapacidade: TLabel;
     lblCombustivel: TLabel;
     edCapacidade: TDBEdit;
     cbCombustivel: TDBLookupComboBox;
+    lblIdBombas: TLabel;
+    lblNumeroBombas: TLabel;
+    lblTanqueBombas: TLabel;
+    nvBombas: TDBNavigator;
+    edIdBombas: TDBEdit;
+    edNumeroBombas: TDBEdit;
+    grdBombas: TDBGrid;
+    cbTanque: TDBLookupComboBox;
+    nvCombustiveis: TDBNavigator;
+    tsAbastecimento: TTabSheet;
+    nvAbastecimento: TDBNavigator;
+    lblIdAbastecimento: TLabel;
+    edIdAbastecimento: TDBEdit;
+    DBGrid1: TDBGrid;
+    lblBomba: TLabel;
+    cbBomba: TDBLookupComboBox;
+    Label1: TLabel;
+    cbUsuario: TDBLookupComboBox;
+    lblQuantidade: TLabel;
+    edLitros: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure tsUsuariosShow(Sender: TObject);
     procedure tsCombustiveisShow(Sender: TObject);
     procedure tsTanquesShow(Sender: TObject);
     procedure tsBombasShow(Sender: TObject);
+    procedure edNomeUsuariosKeyPress(Sender: TObject; var Key: Char);
+    procedure nvUsuariosClick(Sender: TObject; Button: TNavigateBtn);
+    procedure nvCombustiveisClick(Sender: TObject; Button: TNavigateBtn);
+    procedure nvTanquesClick(Sender: TObject; Button: TNavigateBtn);
+    procedure nvBombasClick(Sender: TObject; Button: TNavigateBtn);
   private
     { Private declarations }
   public
@@ -84,31 +108,66 @@ begin
 
 end;
 
+procedure TfrmCadastros.edNomeUsuariosKeyPress(Sender: TObject; var Key: Char);
+begin
+  If Key = #13 then
+  Begin
+    Key:= #0;
+    Perform(Wm_NextDlgCtl,0,0);
+  end;
+end;
+
 procedure TfrmCadastros.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   frmCadastros.Free;
   frmCadastros := nil;
 end;
 
+procedure TfrmCadastros.nvBombasClick(Sender: TObject; Button: TNavigateBtn);
+begin
+  edNumeroBombas.SetFocus;
+end;
+
+procedure TfrmCadastros.nvCombustiveisClick(Sender: TObject;
+  Button: TNavigateBtn);
+begin
+  edTipoCombustiveis.SetFocus;
+end;
+
+procedure TfrmCadastros.nvTanquesClick(Sender: TObject; Button: TNavigateBtn);
+begin
+  edNumeroTanques.SetFocus;
+end;
+
+procedure TfrmCadastros.nvUsuariosClick(Sender: TObject; Button: TNavigateBtn);
+begin
+//  edNomeUsuarios.SetFocus;
+end;
+
 procedure TfrmCadastros.tsBombasShow(Sender: TObject);
 begin
+  dm.AbrirTanques;
   dm.AbrirBombas;
+//  edNumeroBombas.SetFocus;
 end;
 
 procedure TfrmCadastros.tsCombustiveisShow(Sender: TObject);
 begin
   dm.AbrirCombustiveis;
+//  edTipoCombustiveis.SetFocus;
 end;
 
 procedure TfrmCadastros.tsTanquesShow(Sender: TObject);
 begin
   dm.AbrirCombustiveis;
   dm.AbrirTanques;
+//  edNumeroTanques.SetFocus;
 end;
 
 procedure TfrmCadastros.tsUsuariosShow(Sender: TObject);
 begin
   dm.AbrirUsuarios;
+//  edNomeUsuarios.SetFocus;
 end;
 
 end.

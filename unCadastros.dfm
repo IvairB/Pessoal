@@ -10,7 +10,10 @@ object frmCadastros: TfrmCadastros
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   OldCreateOrder = False
+  Visible = True
+  WindowState = wsMaximized
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
@@ -19,7 +22,7 @@ object frmCadastros: TfrmCadastros
     Top = 0
     Width = 708
     Height = 430
-    ActivePage = tsTanques
+    ActivePage = tsAbastecimento
     Align = alClient
     TabOrder = 0
     object tsUsuarios: TTabSheet
@@ -59,18 +62,20 @@ object frmCadastros: TfrmCadastros
         Width = 220
         Height = 25
         DataSource = DM.dsUsuarios
-        TabOrder = 0
+        TabOrder = 5
+        OnClick = nvUsuariosClick
       end
       object edIDUsuarios: TDBEdit
         Left = 158
         Top = 64
         Width = 65
         Height = 21
+        TabStop = False
         DataField = 'ID_USUARIO'
         DataSource = DM.dsUsuarios
         Enabled = False
         ReadOnly = True
-        TabOrder = 1
+        TabOrder = 6
       end
       object edNomeUsuarios: TDBEdit
         Left = 158
@@ -79,7 +84,8 @@ object frmCadastros: TfrmCadastros
         Height = 21
         DataField = 'NOME'
         DataSource = DM.dsUsuarios
-        TabOrder = 2
+        TabOrder = 0
+        OnKeyPress = edNomeUsuariosKeyPress
       end
       object edUsuario: TDBEdit
         Left = 158
@@ -88,7 +94,8 @@ object frmCadastros: TfrmCadastros
         Height = 21
         DataField = 'USUARIO'
         DataSource = DM.dsUsuarios
-        TabOrder = 3
+        TabOrder = 1
+        OnKeyPress = edNomeUsuariosKeyPress
       end
       object edSenha: TDBEdit
         Left = 158
@@ -98,7 +105,7 @@ object frmCadastros: TfrmCadastros
         DataField = 'SENHA'
         DataSource = DM.dsUsuarios
         PasswordChar = '*'
-        TabOrder = 4
+        TabOrder = 2
       end
       object cbAtivo: TDBCheckBox
         Left = 158
@@ -108,15 +115,18 @@ object frmCadastros: TfrmCadastros
         Caption = 'Ativo'
         DataField = 'ATIVO'
         DataSource = DM.dsUsuarios
-        TabOrder = 5
+        TabOrder = 3
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
       end
       object grdUsuarios: TDBGrid
         Left = 70
-        Top = 200
+        Top = 193
         Width = 593
         Height = 153
+        TabStop = False
         DataSource = DM.dsUsuarios
-        TabOrder = 6
+        TabOrder = 4
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -193,41 +203,35 @@ object frmCadastros: TfrmCadastros
         Height = 13
         Caption = 'Valor de Venda:'
       end
-      object nvCombustiveis: TDBNavigator
-        Left = 70
-        Top = 16
-        Width = 240
-        Height = 25
-        DataSource = DM.dsCombustiveis
-        TabOrder = 0
-      end
       object edIDCombustiveis: TDBEdit
         Left = 158
-        Top = 64
+        Top = 58
         Width = 65
         Height = 21
+        TabStop = False
         DataField = 'ID_COMBUSTIVEL'
         DataSource = DM.dsCombustiveis
         Enabled = False
-        ReadOnly = True
-        TabOrder = 1
+        TabOrder = 6
       end
-      object edNomeCombustiveis: TDBEdit
+      object edTipoCombustiveis: TDBEdit
         Left = 158
-        Top = 90
+        Top = 85
         Width = 273
         Height = 21
         DataField = 'TIPO'
         DataSource = DM.dsCombustiveis
-        TabOrder = 2
+        TabOrder = 0
+        OnKeyPress = edNomeUsuariosKeyPress
       end
       object grdCombustiveis: TDBGrid
         Left = 70
-        Top = 196
+        Top = 190
         Width = 611
         Height = 153
+        TabStop = False
         DataSource = DM.dsCombustiveis
-        TabOrder = 6
+        TabOrder = 4
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -269,30 +273,42 @@ object frmCadastros: TfrmCadastros
       end
       object edPerc_Imposto: TDBEdit
         Left = 158
-        Top = 116
+        Top = 111
         Width = 119
         Height = 21
         DataField = 'PERC_IMPOSTO'
         DataSource = DM.dsCombustiveis
-        TabOrder = 3
+        TabOrder = 1
+        OnKeyPress = edNomeUsuariosKeyPress
       end
       object edValorCompra: TDBEdit
         Left = 158
-        Top = 142
+        Top = 137
         Width = 119
         Height = 21
         DataField = 'VALOR_COMPRA'
         DataSource = DM.dsCombustiveis
-        TabOrder = 4
+        TabOrder = 2
+        OnKeyPress = edNomeUsuariosKeyPress
       end
       object edValorVenda: TDBEdit
         Left = 158
-        Top = 168
+        Top = 163
         Width = 119
         Height = 21
         DataField = 'VALOR_VENDA'
         DataSource = DM.dsCombustiveis
+        TabOrder = 3
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object nvCombustiveis: TDBNavigator
+        Left = 70
+        Top = 16
+        Width = 240
+        Height = 25
+        DataSource = DM.dsCombustiveis
         TabOrder = 5
+        OnClick = nvCombustiveisClick
       end
     end
     object tsTanques: TTabSheet
@@ -316,9 +332,9 @@ object frmCadastros: TfrmCadastros
       object lblCapacidade: TLabel
         Left = 70
         Top = 119
-        Width = 57
+        Width = 73
         Height = 13
-        Caption = '% Imposto:'
+        Caption = 'Capacidade (l):'
       end
       object lblCombustivel: TLabel
         Left = 70
@@ -327,39 +343,44 @@ object frmCadastros: TfrmCadastros
         Height = 13
         Caption = 'Combust'#237'vel:'
       end
-      object DBNavigator1: TDBNavigator
+      object nvTanques: TDBNavigator
         Left = 70
         Top = 16
         Width = 240
         Height = 25
         DataSource = DM.dsTanques
-        TabOrder = 0
+        TabOrder = 4
+        TabStop = True
+        OnClick = nvTanquesClick
       end
       object edIdTanques: TDBEdit
         Left = 158
         Top = 64
         Width = 65
         Height = 21
-        DataField = 'ID_COMBUSTIVEL'
+        TabStop = False
+        DataField = 'ID_TANQUE'
         DataSource = DM.dsTanques
         Enabled = False
         ReadOnly = True
-        TabOrder = 1
+        TabOrder = 5
       end
-      object edNumero: TDBEdit
+      object edNumeroTanques: TDBEdit
         Left = 158
         Top = 90
-        Width = 273
+        Width = 65
         Height = 21
         DataField = 'NUMERO'
         DataSource = DM.dsTanques
-        TabOrder = 2
+        TabOrder = 0
+        OnKeyPress = edNomeUsuariosKeyPress
       end
-      object DBGrid1: TDBGrid
+      object grdTanques: TDBGrid
         Left = 70
-        Top = 172
+        Top = 169
         Width = 611
         Height = 153
+        TabStop = False
         DataSource = DM.dsTanques
         TabOrder = 3
         TitleFont.Charset = DEFAULT_CHARSET
@@ -371,6 +392,7 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'ID_TANQUE'
+            ReadOnly = True
             Title.Caption = 'ID'
             Visible = True
           end
@@ -392,6 +414,8 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'COMBUSTIVEL'
+            Title.Caption = 'COMBUST'#205'VEL'
+            Width = 122
             Visible = True
           end>
       end
@@ -402,7 +426,8 @@ object frmCadastros: TfrmCadastros
         Height = 21
         DataField = 'CAPACIDADE'
         DataSource = DM.dsTanques
-        TabOrder = 4
+        TabOrder = 1
+        OnKeyPress = edNomeUsuariosKeyPress
       end
       object cbCombustivel: TDBLookupComboBox
         Left = 158
@@ -411,14 +436,268 @@ object frmCadastros: TfrmCadastros
         Height = 21
         DataField = 'ID_COMBUSTIVEL'
         DataSource = DM.dsTanques
+        KeyField = 'ID_COMBUSTIVEL'
+        ListField = 'TIPO'
         ListSource = DM.dsCombustiveis
-        TabOrder = 5
+        TabOrder = 2
+        OnKeyPress = edNomeUsuariosKeyPress
       end
     end
     object tsBombas: TTabSheet
       Caption = 'Bombas'
       ImageIndex = 3
       OnShow = tsBombasShow
+      object lblIdBombas: TLabel
+        Left = 70
+        Top = 67
+        Width = 15
+        Height = 13
+        Caption = 'ID:'
+      end
+      object lblNumeroBombas: TLabel
+        Left = 70
+        Top = 93
+        Width = 41
+        Height = 13
+        Caption = 'N'#250'mero:'
+      end
+      object lblTanqueBombas: TLabel
+        Left = 70
+        Top = 119
+        Width = 40
+        Height = 13
+        Caption = 'Tanque:'
+      end
+      object nvBombas: TDBNavigator
+        Left = 70
+        Top = 16
+        Width = 240
+        Height = 25
+        DataSource = DM.dsBombas
+        TabOrder = 0
+        OnClick = nvBombasClick
+      end
+      object edIdBombas: TDBEdit
+        Left = 158
+        Top = 64
+        Width = 65
+        Height = 21
+        TabStop = False
+        DataField = 'ID_BOMBA'
+        DataSource = DM.dsBombas
+        Enabled = False
+        ReadOnly = True
+        TabOrder = 1
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object edNumeroBombas: TDBEdit
+        Left = 158
+        Top = 90
+        Width = 65
+        Height = 21
+        DataField = 'NUMERO'
+        DataSource = DM.dsBombas
+        TabOrder = 2
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object grdBombas: TDBGrid
+        Left = 70
+        Top = 143
+        Width = 611
+        Height = 153
+        TabStop = False
+        DataSource = DM.dsBombas
+        TabOrder = 4
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_BOMBA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NUMERO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_TANQUE'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'TANQUE'
+            Visible = True
+          end>
+      end
+      object cbTanque: TDBLookupComboBox
+        Left = 158
+        Top = 116
+        Width = 145
+        Height = 21
+        DataField = 'ID_TANQUE'
+        DataSource = DM.dsBombas
+        KeyField = 'ID_TANQUE'
+        ListField = 'NUMERO'
+        ListSource = DM.dsTanques
+        TabOrder = 3
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+    end
+    object tsAbastecimento: TTabSheet
+      Caption = 'Abastecimento'
+      ImageIndex = 4
+      object lblIdAbastecimento: TLabel
+        Left = 70
+        Top = 67
+        Width = 15
+        Height = 13
+        Caption = 'ID:'
+      end
+      object lblBomba: TLabel
+        Left = 70
+        Top = 92
+        Width = 36
+        Height = 13
+        Caption = 'Bomba:'
+      end
+      object Label1: TLabel
+        Left = 269
+        Top = 67
+        Width = 40
+        Height = 13
+        Caption = 'Usu'#225'rio:'
+      end
+      object lblQuantidade: TLabel
+        Left = 70
+        Top = 117
+        Width = 30
+        Height = 13
+        Caption = 'Litros:'
+      end
+      object nvAbastecimento: TDBNavigator
+        Left = 70
+        Top = 16
+        Width = 240
+        Height = 25
+        DataSource = DM.dsBombas
+        TabOrder = 0
+        OnClick = nvBombasClick
+      end
+      object edIdAbastecimento: TDBEdit
+        Left = 158
+        Top = 64
+        Width = 65
+        Height = 21
+        TabStop = False
+        DataField = 'ID_ABASTECIMENTO'
+        DataSource = DM.dsAbastecimentos
+        Enabled = False
+        ReadOnly = True
+        TabOrder = 1
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object DBGrid1: TDBGrid
+        Left = 70
+        Top = 191
+        Width = 611
+        Height = 153
+        TabStop = False
+        DataSource = DM.dsAbastecimentos
+        TabOrder = 2
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID_ABASTECIMENTO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_BOMBA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ID_USUARIO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VALOR_LIQUIDO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'LITROS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DATA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'HORA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VALOR_IMPOSTO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'VALOR_TOTAL'
+            Visible = True
+          end>
+      end
+      object cbBomba: TDBLookupComboBox
+        Left = 158
+        Top = 89
+        Width = 145
+        Height = 21
+        DataField = 'ID_TANQUE'
+        DataSource = DM.dsAbastecimentos
+        KeyField = 'ID_TANQUE'
+        ListField = 'NUMERO'
+        ListSource = DM.dsTanques
+        TabOrder = 3
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object cbUsuario: TDBLookupComboBox
+        Left = 357
+        Top = 64
+        Width = 145
+        Height = 21
+        DataField = 'ID_USUARIO'
+        DataSource = DM.dsAbastecimentos
+        KeyField = 'ID_USUARIO'
+        ListField = 'USUARIO'
+        ListSource = DM.dsUsuarios
+        TabOrder = 4
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object edLitros: TDBEdit
+        Left = 158
+        Top = 114
+        Width = 65
+        Height = 21
+        DataField = 'LITROS'
+        DataSource = DM.dsAbastecimentos
+        TabOrder = 5
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
     end
   end
 end

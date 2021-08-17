@@ -62,7 +62,6 @@ type
     procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
-    procedure CreateMDIChild(const Name: string);
     procedure MenuVisivel(pVisivel : Boolean);
     procedure CriaFormCadastro(pAba : String);
   public
@@ -79,27 +78,20 @@ implementation
 uses CHILDWIN, About, unCadastros, unDM;
 
 procedure TfrmPrincipal.btEntrarClick(Sender: TObject);
+var
+  vRetorno : String;
 begin
-  if dm.Acesso(edUsuario.Text, edSenha.Text) then
+  vRetorno := dm.Acesso(edUsuario.Text, edSenha.Text);
+  if vRetorno = '' then
   begin
     pnAcesso.Visible := False;
     MenuVisivel(True);
   end
   else
   begin
-    ShowMessage('Usuário/Senha Incorretos');
+    ShowMessage(vRetorno);
     edUsuario.SetFocus;
   end;
-end;
-
-procedure TfrmPrincipal.CreateMDIChild(const Name: string);
-var
-  Child: TMDIChild;
-begin
-  { create a new MDI child window }
-  Child := TMDIChild.Create(Application);
-  Child.Caption := Name;
-  if FileExists(Name) then Child.Memo1.Lines.LoadFromFile(Name);
 end;
 
 procedure TfrmPrincipal.CriaFormCadastro(pAba : String);
