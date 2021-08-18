@@ -358,11 +358,7 @@ object frmCadastros: TfrmCadastros
         ReadOnly = True
         TabOrder = 1
       end
-<<<<<<< HEAD
       object edNumero: TDBEdit
-=======
-      object edNumeroTanques: TDBEdit
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         Left = 158
         Top = 90
         Width = 65

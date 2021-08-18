@@ -19,7 +19,15 @@ object frmCadastros: TfrmCadastros
     Top = 0
     Width = 708
     Height = 430
+<<<<<<< HEAD
+<<<<<<< HEAD:__history/unCadastros.dfm.~68~
     ActivePage = tsUsuarios
+=======
+    ActivePage = tsTanques
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19:__history/unCadastros.dfm.~67~
+=======
+    ActivePage = tsUsuarios
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     Align = alClient
     Enabled = False
     TabOrder = 0

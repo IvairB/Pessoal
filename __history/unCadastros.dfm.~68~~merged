@@ -19,7 +19,7 @@ object frmCadastros: TfrmCadastros
     Top = 0
     Width = 708
     Height = 430
-    ActivePage = tsBombas
+    ActivePage = tsUsuarios
     Align = alClient
     Enabled = False
     TabOrder = 0
@@ -359,9 +359,13 @@ object frmCadastros: TfrmCadastros
         TabOrder = 1
       end
 <<<<<<< HEAD
+      object edNumeroTanques: TDBEdit
+=======
+<<<<<<< HEAD:__history/unCadastros.dfm.~65~
       object edNumero: TDBEdit
 =======
       object edNumeroTanques: TDBEdit
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19:__history/unCadastros.dfm.~68~
 >>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         Left = 158
         Top = 90
@@ -409,7 +413,15 @@ object frmCadastros: TfrmCadastros
           end
           item
             Expanded = False
+<<<<<<< HEAD
             FieldName = 'COMBUSTIVEL'
+=======
+<<<<<<< HEAD:__history/unCadastros.dfm.~65~
+            FieldName = 'ID_COMBUSTIVEL'
+=======
+            FieldName = 'COMBUSTIVEL'
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19:__history/unCadastros.dfm.~68~
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Title.Caption = 'COMBUST'#205'VEL'
             Width = 122
             Visible = True
@@ -510,7 +522,17 @@ object frmCadastros: TfrmCadastros
         Columns = <
           item
             Expanded = False
+<<<<<<< HEAD
             FieldName = 'ID_BOMBA'
+=======
+<<<<<<< HEAD:__history/unCadastros.dfm.~65~
+            FieldName = 'ID_TANQUE'
+            ReadOnly = True
+            Title.Caption = 'ID'
+=======
+            FieldName = 'ID_BOMBA'
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19:__history/unCadastros.dfm.~68~
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end
           item
@@ -520,12 +542,34 @@ object frmCadastros: TfrmCadastros
           end
           item
             Expanded = False
+<<<<<<< HEAD
             FieldName = 'ID_TANQUE'
+=======
+<<<<<<< HEAD:__history/unCadastros.dfm.~65~
+            FieldName = 'ID_COMBUSTIVEL'
+=======
+            FieldName = 'ID_TANQUE'
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19:__history/unCadastros.dfm.~68~
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = False
           end
           item
             Expanded = False
+<<<<<<< HEAD
             FieldName = 'TANQUE'
+=======
+<<<<<<< HEAD:__history/unCadastros.dfm.~65~
+            FieldName = 'CAPACIDADE'
+            Width = 84
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'COMBUSTIVEL'
+=======
+            FieldName = 'TANQUE'
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19:__history/unCadastros.dfm.~68~
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end>
       end

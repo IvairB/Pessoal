@@ -19,13 +19,14 @@ object frmCadastros: TfrmCadastros
     Top = 0
     Width = 708
     Height = 430
-    ActivePage = tsBombas
+    ActivePage = tsCombustiveis
     Align = alClient
-    Enabled = False
     TabOrder = 0
     object tsUsuarios: TTabSheet
       Caption = 'Usu'#225'rios'
       OnShow = tsUsuariosShow
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object lblIDUsuarios: TLabel
         Left = 70
         Top = 67
@@ -132,6 +133,7 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'ID_USUARIO'
+            ReadOnly = False
             Title.Caption = 'ID'
             Width = 35
             Visible = True
@@ -164,6 +166,8 @@ object frmCadastros: TfrmCadastros
       Caption = 'Combust'#237'veis'
       ImageIndex = 2
       OnShow = tsCombustiveisShow
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object lblIDCombustiveis: TLabel
         Left = 70
         Top = 67
@@ -206,7 +210,6 @@ object frmCadastros: TfrmCadastros
         Height = 21
         DataField = 'ID_COMBUSTIVEL'
         DataSource = DM.dsCombustiveis
-        Enabled = False
         TabOrder = 0
       end
       object edTipoCombustiveis: TDBEdit
@@ -310,12 +313,15 @@ object frmCadastros: TfrmCadastros
       Caption = 'Tanques'
       ImageIndex = 1
       OnShow = tsTanquesShow
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object lblIdTanques: TLabel
         Left = 70
         Top = 67
         Width = 15
         Height = 13
         Caption = 'ID:'
+        Visible = False
       end
       object lblNumero: TLabel
         Left = 70
@@ -357,15 +363,12 @@ object frmCadastros: TfrmCadastros
         Enabled = False
         ReadOnly = True
         TabOrder = 1
+        Visible = False
       end
-<<<<<<< HEAD
       object edNumero: TDBEdit
-=======
-      object edNumeroTanques: TDBEdit
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         Left = 158
         Top = 90
-        Width = 65
+        Width = 273
         Height = 21
         DataField = 'NUMERO'
         DataSource = DM.dsTanques
@@ -390,7 +393,7 @@ object frmCadastros: TfrmCadastros
             FieldName = 'ID_TANQUE'
             ReadOnly = True
             Title.Caption = 'ID'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
@@ -409,7 +412,7 @@ object frmCadastros: TfrmCadastros
           end
           item
             Expanded = False
-            FieldName = 'COMBUSTIVEL'
+            FieldName = 'ID_COMBUSTIVEL'
             Title.Caption = 'COMBUST'#205'VEL'
             Width = 122
             Visible = True
@@ -434,7 +437,6 @@ object frmCadastros: TfrmCadastros
         DataSource = DM.dsTanques
         KeyField = 'ID_COMBUSTIVEL'
         ListField = 'TIPO'
-        ListSource = DM.dsCombustiveis
         TabOrder = 4
         OnKeyPress = edNomeUsuariosKeyPress
       end
@@ -449,6 +451,7 @@ object frmCadastros: TfrmCadastros
         Width = 15
         Height = 13
         Caption = 'ID:'
+        Visible = False
       end
       object lblNumeroBombas: TLabel
         Left = 70
@@ -483,12 +486,13 @@ object frmCadastros: TfrmCadastros
         Enabled = False
         ReadOnly = True
         TabOrder = 1
+        Visible = False
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object edNumeroBombas: TDBEdit
         Left = 158
         Top = 90
-        Width = 65
+        Width = 273
         Height = 21
         DataField = 'NUMERO'
         DataSource = DM.dsBombas
@@ -510,8 +514,10 @@ object frmCadastros: TfrmCadastros
         Columns = <
           item
             Expanded = False
-            FieldName = 'ID_BOMBA'
-            Visible = True
+            FieldName = 'ID_TANQUE'
+            ReadOnly = True
+            Title.Caption = 'ID'
+            Visible = False
           end
           item
             Expanded = False
@@ -520,12 +526,17 @@ object frmCadastros: TfrmCadastros
           end
           item
             Expanded = False
-            FieldName = 'ID_TANQUE'
+            FieldName = 'ID_COMBUSTIVEL'
             Visible = False
           end
           item
             Expanded = False
-            FieldName = 'TANQUE'
+            FieldName = 'CAPACIDADE'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'COMBUSTIVEL'
             Visible = True
           end>
       end
@@ -536,7 +547,6 @@ object frmCadastros: TfrmCadastros
         Height = 21
         DataField = 'ID_TANQUE'
         DataSource = DM.dsBombas
-        KeyField = 'ID_TANQUE'
         ListField = 'NUMERO'
         ListSource = DM.dsTanques
         TabOrder = 3

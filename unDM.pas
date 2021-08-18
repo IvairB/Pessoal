@@ -39,6 +39,18 @@ type
     qryTanquesNUMERO: TIntegerField;
     qryTanquesID_COMBUSTIVEL: TIntegerField;
     qryTanquesCAPACIDADE: TBCDField;
+<<<<<<< HEAD
+=======
+    qryAbastecimentosID_ABASTECIMENTO: TIntegerField;
+    qryAbastecimentosID_BOMBA: TIntegerField;
+    qryAbastecimentosID_USUARIO: TIntegerField;
+    qryAbastecimentosVALOR_LIQUIDO: TBCDField;
+    qryAbastecimentosLITROS: TBCDField;
+    qryAbastecimentosDATA: TDateField;
+    qryAbastecimentosHORA: TTimeField;
+    qryAbastecimentosVALOR_IMPOSTO: TBCDField;
+    qryAbastecimentosVALOR_TOTAL: TBCDField;
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     qryCombustiveis: TFDQuery;
     dsCombustiveis: TDataSource;
     updCombustiveis: TFDUpdateSQL;
@@ -51,6 +63,7 @@ type
     qryBombasTANQUE: TIntegerField;
     qryAbastecimentosUSUARIO: TStringField;
     qryAbastecimentosBOMBA: TIntegerField;
+<<<<<<< HEAD
     qryAcesso: TFDQuery;
     qryAcessoID_USUARIO: TFDAutoIncField;
     qryAcessoNOME: TStringField;
@@ -75,6 +88,8 @@ type
     qryAbastecimentosHORA: TTimeField;
     qryAbastecimentosVALOR_IMPOSTO: TBCDField;
     qryAbastecimentosVALOR_TOTAL: TBCDField;
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -87,7 +102,10 @@ type
     procedure AbrirCombustiveis;
     procedure AbrirAbastecimento;
     function Acesso(pUsuario, pSenha : String) : String;
+<<<<<<< HEAD
     procedure BuscarDadosAbastecimento(pIdBomba : Integer);
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
   end;
 
 var
@@ -147,6 +165,7 @@ end;
 function TDM.Acesso(pUsuario, pSenha: String): String;
 begin
   Result := 'SEM ACESSO';
+<<<<<<< HEAD
   with qryAcesso do
   begin
     Close;
@@ -166,6 +185,22 @@ begin
     else
       Result := 'Usuário não existe.';
   end;
+=======
+  AbrirUsuarios;
+  if qryUsuarios.Locate(UpperCase(qryUsuariosNOME.AsString), UpperCase(pUsuario)) then
+    if (UpperCase(qryUsuariosSENHA.AsString) = UpperCase(pSenha)) then
+      if (UpperCase(qryUsuariosATIVO.AsString) = UpperCase('S')) then
+      begin
+        Result := '';
+        vgIdUsuario := qryUsuariosID_USUARIO.AsInteger;
+      end
+      else
+        Result := 'Usuário inativo.'
+    else
+      Result := 'Senha Incorreta.'
+  else
+    Result := 'Usuário não existe.';
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
 end;
 
 procedure TDM.DataModuleCreate(Sender: TObject);

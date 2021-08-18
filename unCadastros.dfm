@@ -63,6 +63,10 @@ object frmCadastros: TfrmCadastros
         Height = 25
         DataSource = DM.dsUsuarios
         TabOrder = 5
+<<<<<<< HEAD
+=======
+        OnClick = nvUsuariosClick
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIDUsuarios: TDBEdit
         Left = 158
@@ -279,7 +283,10 @@ object frmCadastros: TfrmCadastros
         DataField = 'PERC_IMPOSTO'
         DataSource = DM.dsCombustiveis
         TabOrder = 1
+<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object edValorCompra: TDBEdit
@@ -300,7 +307,10 @@ object frmCadastros: TfrmCadastros
         DataField = 'VALOR_VENDA'
         DataSource = DM.dsCombustiveis
         TabOrder = 3
+<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object nvCombustiveis: TDBNavigator
@@ -310,6 +320,7 @@ object frmCadastros: TfrmCadastros
         Height = 25
         DataSource = DM.dsCombustiveis
         TabOrder = 5
+        OnClick = nvCombustiveisClick
       end
     end
     object tsTanques: TTabSheet
@@ -352,6 +363,10 @@ object frmCadastros: TfrmCadastros
         DataSource = DM.dsTanques
         TabOrder = 4
         TabStop = True
+<<<<<<< HEAD
+=======
+        OnClick = nvTanquesClick
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIdTanques: TDBEdit
         Left = 158
@@ -373,7 +388,10 @@ object frmCadastros: TfrmCadastros
         DataField = 'NUMERO'
         DataSource = DM.dsTanques
         TabOrder = 0
+<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object grdTanques: TDBGrid
@@ -428,7 +446,10 @@ object frmCadastros: TfrmCadastros
         DataField = 'CAPACIDADE'
         DataSource = DM.dsTanques
         TabOrder = 1
+<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object cbCombustivel: TDBLookupComboBox
@@ -477,6 +498,10 @@ object frmCadastros: TfrmCadastros
         Height = 25
         DataSource = DM.dsBombas
         TabOrder = 0
+<<<<<<< HEAD
+=======
+        OnClick = nvBombasClick
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIdBombas: TDBEdit
         Left = 158
@@ -499,7 +524,10 @@ object frmCadastros: TfrmCadastros
         DataField = 'NUMERO'
         DataSource = DM.dsBombas
         TabOrder = 2
+<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object grdBombas: TDBGrid
@@ -554,7 +582,10 @@ object frmCadastros: TfrmCadastros
     object tsAbastecimento: TTabSheet
       Caption = 'Abastecimento'
       ImageIndex = 4
+<<<<<<< HEAD
       OnShow = tsAbastecimentoShow
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       object lblIdAbastecimento: TLabel
         Left = 70
         Top = 67
@@ -569,6 +600,16 @@ object frmCadastros: TfrmCadastros
         Height = 13
         Caption = 'Bomba:'
       end
+<<<<<<< HEAD
+=======
+      object Label1: TLabel
+        Left = 269
+        Top = 67
+        Width = 40
+        Height = 13
+        Caption = 'Usu'#225'rio:'
+      end
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       object lblQuantidade: TLabel
         Left = 70
         Top = 117
@@ -576,6 +617,7 @@ object frmCadastros: TfrmCadastros
         Height = 13
         Caption = 'Litros:'
       end
+<<<<<<< HEAD
       object lblValor: TLabel
         Left = 70
         Top = 142
@@ -636,13 +678,21 @@ object frmCadastros: TfrmCadastros
         DataField = 'PERC_IMPOSTO'
         DataSource = DM.dsDadosAbastecimento
       end
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       object nvAbastecimento: TDBNavigator
         Left = 70
         Top = 16
         Width = 240
         Height = 25
+<<<<<<< HEAD
         DataSource = DM.dsAbastecimentos
         TabOrder = 0
+=======
+        DataSource = DM.dsBombas
+        TabOrder = 0
+        OnClick = nvBombasClick
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIdAbastecimento: TDBEdit
         Left = 158
@@ -659,7 +709,11 @@ object frmCadastros: TfrmCadastros
       end
       object DBGrid1: TDBGrid
         Left = 70
+<<<<<<< HEAD
         Top = 215
+=======
+        Top = 191
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         Width = 611
         Height = 153
         TabStop = False
@@ -684,19 +738,28 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'ID_USUARIO'
+<<<<<<< HEAD
             Width = 64
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'VALOR_LIQUIDO'
+<<<<<<< HEAD
             Width = 64
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LITROS'
+<<<<<<< HEAD
             Width = 64
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end
           item
@@ -712,18 +775,25 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'VALOR_IMPOSTO'
+<<<<<<< HEAD
             Width = 64
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'VALOR_TOTAL'
+<<<<<<< HEAD
             Width = 64
+=======
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
             Visible = True
           end>
       end
       object cbBomba: TDBLookupComboBox
         Left = 158
+<<<<<<< HEAD
         Top = 87
         Width = 145
         Height = 21
@@ -793,6 +863,42 @@ object frmCadastros: TfrmCadastros
         OnKeyDown = edPerc_ImpostoKeyDown
         OnKeyPress = edNomeUsuariosKeyPress
       end
+=======
+        Top = 89
+        Width = 145
+        Height = 21
+        DataField = 'ID_TANQUE'
+        DataSource = DM.dsAbastecimentos
+        KeyField = 'ID_TANQUE'
+        ListField = 'NUMERO'
+        ListSource = DM.dsTanques
+        TabOrder = 3
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object cbUsuario: TDBLookupComboBox
+        Left = 357
+        Top = 64
+        Width = 145
+        Height = 21
+        DataField = 'ID_USUARIO'
+        DataSource = DM.dsAbastecimentos
+        KeyField = 'ID_USUARIO'
+        ListField = 'USUARIO'
+        ListSource = DM.dsUsuarios
+        TabOrder = 4
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+      object edLitros: TDBEdit
+        Left = 158
+        Top = 114
+        Width = 65
+        Height = 21
+        DataField = 'LITROS'
+        DataSource = DM.dsAbastecimentos
+        TabOrder = 5
+        OnKeyPress = edNomeUsuariosKeyPress
+      end
+>>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     end
   end
 end
