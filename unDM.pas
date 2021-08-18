@@ -23,9 +23,6 @@ type
     qryUsuariosATIVO: TStringField;
     updUsuarios: TFDUpdateSQL;
     dsUsuarios: TDataSource;
-    qryCombustiveis: TFDQuery;
-    updCombustiveis: TFDUpdateSQL;
-    dsCombustiveis: TDataSource;
     qryTanques: TFDQuery;
     updTanques: TFDUpdateSQL;
     dsTanques: TDataSource;
@@ -33,11 +30,6 @@ type
     updBombas: TFDUpdateSQL;
     dsBombas: TDataSource;
     qryAbastecimentos: TFDQuery;
-    IntegerField4: TIntegerField;
-    StringField13: TStringField;
-    StringField14: TStringField;
-    StringField15: TStringField;
-    StringField16: TStringField;
     updAbastecimentos: TFDUpdateSQL;
     dsAbastecimentos: TDataSource;
     qryBombasID_BOMBA: TIntegerField;
@@ -47,23 +39,55 @@ type
     qryTanquesNUMERO: TIntegerField;
     qryTanquesID_COMBUSTIVEL: TIntegerField;
     qryTanquesCAPACIDADE: TBCDField;
+    qryCombustiveis: TFDQuery;
+    dsCombustiveis: TDataSource;
+    updCombustiveis: TFDUpdateSQL;
     qryCombustiveisID_COMBUSTIVEL: TIntegerField;
     qryCombustiveisTIPO: TStringField;
     qryCombustiveisVALOR_COMPRA: TBCDField;
     qryCombustiveisVALOR_VENDA: TBCDField;
     qryCombustiveisPERC_IMPOSTO: TBCDField;
     qryTanquesCOMBUSTIVEL: TStringField;
+    qryBombasTANQUE: TIntegerField;
+    qryAbastecimentosUSUARIO: TStringField;
+    qryAbastecimentosBOMBA: TIntegerField;
+    qryAcesso: TFDQuery;
+    qryAcessoID_USUARIO: TFDAutoIncField;
+    qryAcessoNOME: TStringField;
+    qryAcessoUSUARIO: TStringField;
+    qryAcessoSENHA: TStringField;
+    qryAcessoATIVO: TStringField;
+    qryDadosAbastecimento: TFDQuery;
+    qryDadosAbastecimentoID_COMBUSTIVEL: TIntegerField;
+    qryDadosAbastecimentoTIPO: TStringField;
+    qryDadosAbastecimentoVALOR_COMPRA: TBCDField;
+    qryDadosAbastecimentoVALOR_VENDA: TBCDField;
+    qryDadosAbastecimentoPERC_IMPOSTO: TBCDField;
+    qryDadosAbastecimentoDATA: TDateField;
+    qryDadosAbastecimentoHORA: TTimeField;
+    dsDadosAbastecimento: TDataSource;
+    qryAbastecimentosID_ABASTECIMENTO: TFDAutoIncField;
+    qryAbastecimentosID_BOMBA: TIntegerField;
+    qryAbastecimentosID_USUARIO: TIntegerField;
+    qryAbastecimentosVALOR_LIQUIDO: TFMTBCDField;
+    qryAbastecimentosLITROS: TFMTBCDField;
+    qryAbastecimentosDATA: TDateField;
+    qryAbastecimentosHORA: TTimeField;
+    qryAbastecimentosVALOR_IMPOSTO: TBCDField;
+    qryAbastecimentosVALOR_TOTAL: TBCDField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    vgIdUsuario : Integer;
     procedure AbrirUsuarios;
     procedure AbrirTanques;
     procedure AbrirBombas;
     procedure AbrirCombustiveis;
     procedure AbrirAbastecimento;
-    function Acesso(pUsuario, pSenha : String) : Boolean;
+    function Acesso(pUsuario, pSenha : String) : String;
+    procedure BuscarDadosAbastecimento(pIdBomba : Integer);
   end;
 
 var
@@ -120,13 +144,28 @@ begin
   end;
 end;
 
-function TDM.Acesso(pUsuario, pSenha: String): Boolean;
+function TDM.Acesso(pUsuario, pSenha: String): String;
 begin
-  Result := False;
-  AbrirUsuarios;
-  if (UpperCase(qryUsuariosNOME.AsString) = UpperCase(pUsuario)) and
-     (UpperCase(qryUsuariosSENHA.AsString) = UpperCase(pSenha)) then
-     Result := True;
+  Result := 'SEM ACESSO';
+  with qryAcesso do
+  begin
+    Close;
+    ParamByName('USUARIO').AsString := pUsuario;
+    Open;
+    if RecordCount > 0 then
+      if (UpperCase(qryAcessoSENHA.AsString) = UpperCase(pSenha)) then
+        if (UpperCase(qryAcessoATIVO.AsString) = UpperCase('S')) then
+        begin
+          vgIdUsuario := qryAcessoID_USUARIO.AsInteger;
+          Result := '';
+        end
+        else
+          Result := 'Usuário inativo.'
+      else
+        Result := 'Senha Incorreta.'
+    else
+      Result := 'Usuário não existe.';
+  end;
 end;
 
 procedure TDM.DataModuleCreate(Sender: TObject);
@@ -136,6 +175,16 @@ begin
     if Connected then
       Connected := False;
     Connected := True;
+  end;
+end;
+
+procedure TDM.BuscarDadosAbastecimento(pIdBomba : Integer);
+begin
+  with qryDadosAbastecimento do
+  begin
+    Close;
+    ParamByName('id_bomba').AsInteger := pIdBomba;
+    Open;
   end;
 end;
 

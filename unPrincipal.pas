@@ -48,6 +48,8 @@ type
     edSenha: TEdit;
     Outro1: TMenuItem;
     actTanque: TAction;
+    actAbastecimento: TAction;
+    Abastecimento1: TMenuItem;
     procedure actUsuarioExecute(Sender: TObject);
     procedure actCombustivelExecute(Sender: TObject);
     procedure btEntrarClick(Sender: TObject);
@@ -60,9 +62,9 @@ type
     procedure actSobrePostoExecute(Sender: TObject);
     procedure actRelatorioGeralExecute(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure actAbastecimentoExecute(Sender: TObject);
   private
     { Private declarations }
-    procedure CreateMDIChild(const Name: string);
     procedure MenuVisivel(pVisivel : Boolean);
     procedure CriaFormCadastro(pAba : String);
   public
@@ -79,27 +81,20 @@ implementation
 uses CHILDWIN, About, unCadastros, unDM;
 
 procedure TfrmPrincipal.btEntrarClick(Sender: TObject);
+var
+  vRetorno : String;
 begin
-  if dm.Acesso(edUsuario.Text, edSenha.Text) then
+  vRetorno := dm.Acesso(edUsuario.Text, edSenha.Text);
+  if vRetorno = '' then
   begin
     pnAcesso.Visible := False;
     MenuVisivel(True);
   end
   else
   begin
-    ShowMessage('Usuário/Senha Incorretos');
+    ShowMessage(vRetorno);
     edUsuario.SetFocus;
   end;
-end;
-
-procedure TfrmPrincipal.CreateMDIChild(const Name: string);
-var
-  Child: TMDIChild;
-begin
-  { create a new MDI child window }
-  Child := TMDIChild.Create(Application);
-  Child.Caption := Name;
-  if FileExists(Name) then Child.Memo1.Lines.LoadFromFile(Name);
 end;
 
 procedure TfrmPrincipal.CriaFormCadastro(pAba : String);
@@ -110,11 +105,13 @@ begin
     frmCadastros.Show;
     if pAba = 'U' then
       frmCadastros.AtivaTab(frmCadastros.tsUsuarios)
-    else if pAba = 'C'  then
+    else if pAba = 'C' then
       frmCadastros.AtivaTab(frmCadastros.tsCombustiveis)
-    else if pAba = 'T'  then
+    else if pAba = 'A' then
+      frmCadastros.AtivaTab(frmCadastros.tsAbastecimento)
+    else if pAba = 'T' then
       frmCadastros.AtivaTab(frmCadastros.tsTanques)
-    else if pAba = 'B'  then
+    else if pAba = 'B' then
       frmCadastros.AtivaTab(frmCadastros.tsBombas);
   end;
 end;
@@ -149,6 +146,11 @@ end;
 procedure TfrmPrincipal.actTanqueExecute(Sender: TObject);
 begin
   CriaFormCadastro('T');
+end;
+
+procedure TfrmPrincipal.actAbastecimentoExecute(Sender: TObject);
+begin
+  CriaFormCadastro('A');
 end;
 
 procedure TfrmPrincipal.actBombaExecute(Sender: TObject);
