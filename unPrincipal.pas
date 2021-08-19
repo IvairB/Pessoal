@@ -78,7 +78,7 @@ implementation
 
 {$R *.dfm}
 
-uses CHILDWIN, About, unCadastros, unDM;
+uses CHILDWIN, About, unCadastros, unDM, unRelatorioGeral;
 
 procedure TfrmPrincipal.btEntrarClick(Sender: TObject);
 var
@@ -99,21 +99,25 @@ end;
 
 procedure TfrmPrincipal.CriaFormCadastro(pAba : String);
 begin
-  if frmCadastros = nil then
+  if frmCadastros <> nil then
   begin
-    frmCadastros := TfrmCadastros.Create(Self);
-    frmCadastros.Show;
-    if pAba = 'U' then
-      frmCadastros.AtivaTab(frmCadastros.tsUsuarios)
-    else if pAba = 'C' then
-      frmCadastros.AtivaTab(frmCadastros.tsCombustiveis)
-    else if pAba = 'A' then
-      frmCadastros.AtivaTab(frmCadastros.tsAbastecimento)
-    else if pAba = 'T' then
-      frmCadastros.AtivaTab(frmCadastros.tsTanques)
-    else if pAba = 'B' then
-      frmCadastros.AtivaTab(frmCadastros.tsBombas);
+    frmCadastros.Close;
+    frmCadastros.Free;
+    frmCadastros := nil;
   end;
+
+  frmCadastros := TfrmCadastros.Create(Self);
+  frmCadastros.Show;
+  if pAba = 'U' then
+    frmCadastros.AtivaTab(frmCadastros.tsUsuarios)
+  else if pAba = 'C' then
+    frmCadastros.AtivaTab(frmCadastros.tsCombustiveis)
+  else if pAba = 'A' then
+    frmCadastros.AtivaTab(frmCadastros.tsAbastecimento)
+  else if pAba = 'T' then
+    frmCadastros.AtivaTab(frmCadastros.tsTanques)
+  else if pAba = 'B' then
+    frmCadastros.AtivaTab(frmCadastros.tsBombas);
 end;
 
 procedure TfrmPrincipal.edSenhaKeyPress(Sender: TObject; var Key: Char);
@@ -140,7 +144,8 @@ end;
 
 procedure TfrmPrincipal.actRelatorioGeralExecute(Sender: TObject);
 begin
-  //
+  frmRelatorioGeral := TfrmRelatorioGeral.Create(Self);
+  frmRelatorioGeral.Show;
 end;
 
 procedure TfrmPrincipal.actTanqueExecute(Sender: TObject);

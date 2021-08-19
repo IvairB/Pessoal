@@ -63,10 +63,6 @@ object frmCadastros: TfrmCadastros
         Height = 25
         DataSource = DM.dsUsuarios
         TabOrder = 5
-<<<<<<< HEAD
-=======
-        OnClick = nvUsuariosClick
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIDUsuarios: TDBEdit
         Left = 158
@@ -139,7 +135,6 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'ID_USUARIO'
-            Title.Caption = 'ID'
             Width = 35
             Visible = True
           end
@@ -173,42 +168,42 @@ object frmCadastros: TfrmCadastros
       OnShow = tsCombustiveisShow
       object lblIDCombustiveis: TLabel
         Left = 70
-        Top = 67
+        Top = 59
         Width = 15
         Height = 13
         Caption = 'ID:'
       end
       object lblTipoCombustiveis: TLabel
         Left = 70
-        Top = 93
+        Top = 85
         Width = 24
         Height = 13
         Caption = 'Tipo:'
       end
       object lblPercImposto: TLabel
         Left = 70
-        Top = 119
+        Top = 111
         Width = 57
         Height = 13
         Caption = '% Imposto:'
       end
       object lblValorCompra: TLabel
         Left = 70
-        Top = 145
+        Top = 137
         Width = 83
         Height = 13
         Caption = 'Valor de Compra:'
       end
       object lblValorVenda: TLabel
         Left = 70
-        Top = 171
+        Top = 163
         Width = 76
         Height = 13
         Caption = 'Valor de Venda:'
       end
       object edIDCombustiveis: TDBEdit
         Left = 158
-        Top = 58
+        Top = 56
         Width = 65
         Height = 21
         TabStop = False
@@ -219,7 +214,7 @@ object frmCadastros: TfrmCadastros
       end
       object edTipoCombustiveis: TDBEdit
         Left = 158
-        Top = 85
+        Top = 82
         Width = 273
         Height = 21
         DataField = 'TIPO'
@@ -244,7 +239,6 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'ID_COMBUSTIVEL'
-            Title.Caption = 'ID'
             Width = 50
             Visible = True
           end
@@ -271,27 +265,23 @@ object frmCadastros: TfrmCadastros
             Expanded = False
             FieldName = 'VALOR_VENDA'
             Title.Caption = 'VALOR DE VENDA'
-            Width = 64
             Visible = True
           end>
       end
       object edPerc_Imposto: TDBEdit
-        Left = 158
-        Top = 111
-        Width = 119
-        Height = 21
+        Left = 159
+        Top = 108
+        Width = 118
+        Height = 19
         DataField = 'PERC_IMPOSTO'
         DataSource = DM.dsCombustiveis
         TabOrder = 1
-<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object edValorCompra: TDBEdit
         Left = 158
-        Top = 137
+        Top = 134
         Width = 119
         Height = 21
         DataField = 'VALOR_COMPRA'
@@ -301,16 +291,13 @@ object frmCadastros: TfrmCadastros
       end
       object edValorVenda: TDBEdit
         Left = 158
-        Top = 163
+        Top = 160
         Width = 119
         Height = 21
         DataField = 'VALOR_VENDA'
         DataSource = DM.dsCombustiveis
         TabOrder = 3
-<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object nvCombustiveis: TDBNavigator
@@ -320,7 +307,6 @@ object frmCadastros: TfrmCadastros
         Height = 25
         DataSource = DM.dsCombustiveis
         TabOrder = 5
-        OnClick = nvCombustiveisClick
       end
     end
     object tsTanques: TTabSheet
@@ -363,10 +349,6 @@ object frmCadastros: TfrmCadastros
         DataSource = DM.dsTanques
         TabOrder = 4
         TabStop = True
-<<<<<<< HEAD
-=======
-        OnClick = nvTanquesClick
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIdTanques: TDBEdit
         Left = 158
@@ -388,10 +370,7 @@ object frmCadastros: TfrmCadastros
         DataField = 'NUMERO'
         DataSource = DM.dsTanques
         TabOrder = 0
-<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object grdTanques: TDBGrid
@@ -446,15 +425,12 @@ object frmCadastros: TfrmCadastros
         DataField = 'CAPACIDADE'
         DataSource = DM.dsTanques
         TabOrder = 1
-<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object cbCombustivel: TDBLookupComboBox
         Left = 158
-        Top = 142
+        Top = 141
         Width = 145
         Height = 21
         DataField = 'ID_COMBUSTIVEL'
@@ -498,10 +474,6 @@ object frmCadastros: TfrmCadastros
         Height = 25
         DataSource = DM.dsBombas
         TabOrder = 0
-<<<<<<< HEAD
-=======
-        OnClick = nvBombasClick
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       end
       object edIdBombas: TDBEdit
         Left = 158
@@ -524,10 +496,7 @@ object frmCadastros: TfrmCadastros
         DataField = 'NUMERO'
         DataSource = DM.dsBombas
         TabOrder = 2
-<<<<<<< HEAD
         OnKeyDown = edPerc_ImpostoKeyDown
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object grdBombas: TDBGrid
@@ -547,6 +516,7 @@ object frmCadastros: TfrmCadastros
           item
             Expanded = False
             FieldName = 'ID_BOMBA'
+            Title.Caption = 'ID'
             Visible = True
           end
           item
@@ -582,10 +552,7 @@ object frmCadastros: TfrmCadastros
     object tsAbastecimento: TTabSheet
       Caption = 'Abastecimento'
       ImageIndex = 4
-<<<<<<< HEAD
       OnShow = tsAbastecimentoShow
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       object lblIdAbastecimento: TLabel
         Left = 70
         Top = 67
@@ -600,16 +567,6 @@ object frmCadastros: TfrmCadastros
         Height = 13
         Caption = 'Bomba:'
       end
-<<<<<<< HEAD
-=======
-      object Label1: TLabel
-        Left = 269
-        Top = 67
-        Width = 40
-        Height = 13
-        Caption = 'Usu'#225'rio:'
-      end
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       object lblQuantidade: TLabel
         Left = 70
         Top = 117
@@ -617,13 +574,12 @@ object frmCadastros: TfrmCadastros
         Height = 13
         Caption = 'Litros:'
       end
-<<<<<<< HEAD
       object lblValor: TLabel
-        Left = 70
-        Top = 142
-        Width = 28
+        Left = 318
+        Top = 166
+        Width = 56
         Height = 13
-        Caption = 'Valor:'
+        Caption = 'R$ Venda/l:'
       end
       object Label3: TLabel
         Left = 318
@@ -633,66 +589,124 @@ object frmCadastros: TfrmCadastros
         Caption = 'R$/l:'
       end
       object lblValorImporto: TLabel
-        Left = 70
-        Top = 166
-        Width = 85
+        Left = 318
+        Top = 142
+        Width = 65
         Height = 13
-        Caption = 'Valor do Imposto:'
+        Caption = 'R$ Imposto/l:'
       end
       object lblValorTotal: TLabel
         Left = 70
         Top = 190
-        Width = 28
+        Width = 55
         Height = 13
-        Caption = 'Valor:'
+        Caption = 'Valor Total:'
       end
       object edData: TDBText
         Left = 606
         Top = 102
         Width = 65
         Height = 17
+        Color = clYellow
         DataField = 'DATA'
         DataSource = DM.dsAbastecimentos
+        ParentColor = False
+        Transparent = False
+        Visible = False
       end
       object edHora: TDBText
         Left = 606
         Top = 125
         Width = 65
         Height = 17
+        Color = clYellow
         DataField = 'HORA'
         DataSource = DM.dsAbastecimentos
+        ParentColor = False
+        Transparent = False
+        Visible = False
       end
       object edUsuarioAbastecimento: TDBText
         Left = 606
         Top = 145
         Width = 65
         Height = 17
+        Color = clYellow
         DataField = 'ID_USUARIO'
         DataSource = DM.dsAbastecimentos
+        ParentColor = False
+        Transparent = False
+        Visible = False
       end
       object edPercImposto: TDBText
-        Left = 606
-        Top = 78
+        Left = 406
+        Top = 117
         Width = 65
         Height = 17
+        Alignment = taRightJustify
         DataField = 'PERC_IMPOSTO'
         DataSource = DM.dsDadosAbastecimento
+        Transparent = False
       end
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+      object Label1: TLabel
+        Left = 318
+        Top = 117
+        Width = 57
+        Height = 13
+        Caption = '% Imposto:'
+      end
+      object Label2: TLabel
+        Left = 70
+        Top = 142
+        Width = 64
+        Height = 13
+        Caption = 'Valor L'#237'quido:'
+      end
+      object Label4: TLabel
+        Left = 70
+        Top = 166
+        Width = 85
+        Height = 13
+        Caption = 'Valor do Imposto:'
+      end
+      object edValorLiquidoLitro: TDBText
+        Left = 406
+        Top = 92
+        Width = 65
+        Height = 17
+        Alignment = taRightJustify
+        DataField = 'VALOR_VENDA'
+        DataSource = DM.dsDadosAbastecimento
+        Transparent = False
+      end
+      object edValorImpostoLitro: TDBText
+        Left = 406
+        Top = 142
+        Width = 65
+        Height = 17
+        Alignment = taRightJustify
+        DataField = 'VALOR_IMPOSTO'
+        DataSource = DM.dsDadosAbastecimento
+        Transparent = False
+      end
+      object edValorTotalLitro: TDBText
+        Left = 406
+        Top = 166
+        Width = 65
+        Height = 17
+        Alignment = taRightJustify
+        DataField = 'VALOR_VENDA_IMPOSTO'
+        DataSource = DM.dsDadosAbastecimento
+        Transparent = False
+      end
       object nvAbastecimento: TDBNavigator
         Left = 70
         Top = 16
         Width = 240
         Height = 25
-<<<<<<< HEAD
         DataSource = DM.dsAbastecimentos
         TabOrder = 0
-=======
-        DataSource = DM.dsBombas
-        TabOrder = 0
-        OnClick = nvBombasClick
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+        OnClick = nvAbastecimentoClick
       end
       object edIdAbastecimento: TDBEdit
         Left = 158
@@ -707,17 +721,14 @@ object frmCadastros: TfrmCadastros
         TabOrder = 1
         OnKeyPress = edNomeUsuariosKeyPress
       end
-      object DBGrid1: TDBGrid
+      object grdAbastecimentos: TDBGrid
         Left = 70
-<<<<<<< HEAD
         Top = 215
-=======
-        Top = 191
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
         Width = 611
         Height = 153
         TabStop = False
         DataSource = DM.dsAbastecimentos
+        Enabled = False
         TabOrder = 2
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -726,45 +737,53 @@ object frmCadastros: TfrmCadastros
         TitleFont.Style = []
         Columns = <
           item
+            Alignment = taCenter
             Expanded = False
             FieldName = 'ID_ABASTECIMENTO'
+            Title.Caption = 'ID'
+            Width = 41
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BOMBA'
+            Width = 51
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ID_BOMBA'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'ID_USUARIO'
-<<<<<<< HEAD
-            Width = 64
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'LITROS'
+            Width = 50
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'VALOR_LIQUIDO'
-<<<<<<< HEAD
-            Width = 64
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+            Title.Caption = 'VALOR L'#205'QUIDO'
+            Width = 87
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'LITROS'
-<<<<<<< HEAD
-            Width = 64
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+            FieldName = 'VALOR_IMPOSTO'
+            Title.Caption = 'VALOR DO IMPOSTO'
+            Width = 103
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DATA'
+            FieldName = 'VALOR_TOTAL'
+            Width = 77
             Visible = True
           end
           item
@@ -774,27 +793,20 @@ object frmCadastros: TfrmCadastros
           end
           item
             Expanded = False
-            FieldName = 'VALOR_IMPOSTO'
-<<<<<<< HEAD
-            Width = 64
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+            FieldName = 'DATA'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'VALOR_TOTAL'
-<<<<<<< HEAD
-            Width = 64
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
+            FieldName = 'USUARIO'
+            Title.Caption = 'USU'#193'RIO'
+            Width = 234
             Visible = True
           end>
       end
       object cbBomba: TDBLookupComboBox
         Left = 158
-<<<<<<< HEAD
-        Top = 87
+        Top = 89
         Width = 145
         Height = 21
         DataField = 'ID_BOMBA'
@@ -803,7 +815,7 @@ object frmCadastros: TfrmCadastros
         ListField = 'NUMERO'
         ListSource = DM.dsBombas
         TabOrder = 3
-        OnExit = cbBombaExit
+        OnCloseUp = cbBombaCloseUp
         OnKeyPress = edNomeUsuariosKeyPress
       end
       object edLitros: TDBEdit
@@ -818,24 +830,28 @@ object frmCadastros: TfrmCadastros
         OnKeyDown = edPerc_ImpostoKeyDown
         OnKeyPress = edNomeUsuariosKeyPress
       end
-      object edValor: TDBEdit
+      object edValorTotal: TDBEdit
         Left = 158
-        Top = 139
+        Top = 187
         Width = 65
         Height = 21
+        Color = clBtnFace
         DataField = 'VALOR_TOTAL'
         DataSource = DM.dsAbastecimentos
         Enabled = False
         TabOrder = 5
+        OnKeyDown = edPerc_ImpostoKeyDown
         OnKeyPress = edNomeUsuariosKeyPress
       end
-      object edValorVendaAbastecimento: TDBEdit
-        Left = 406
-        Top = 89
+      object edValorLiquido: TDBEdit
+        Left = 158
+        Top = 139
         Width = 65
         Height = 21
-        DataField = 'VALOR_VENDA'
-        DataSource = DM.dsDadosAbastecimento
+        TabStop = False
+        Color = clBtnFace
+        DataField = 'VALOR_LIQUIDO'
+        DataSource = DM.dsAbastecimentos
         Enabled = False
         TabOrder = 6
         OnKeyPress = edNomeUsuariosKeyPress
@@ -845,60 +861,14 @@ object frmCadastros: TfrmCadastros
         Top = 163
         Width = 65
         Height = 21
-        DataField = 'VALOR_LIQUIDO'
+        TabStop = False
+        Color = clBtnFace
+        DataField = 'VALOR_IMPOSTO'
         DataSource = DM.dsAbastecimentos
         Enabled = False
         TabOrder = 7
         OnKeyPress = edNomeUsuariosKeyPress
       end
-      object edValorTotal: TDBEdit
-        Left = 158
-        Top = 187
-        Width = 65
-        Height = 21
-        DataField = 'VALOR_IMPOSTO'
-        DataSource = DM.dsAbastecimentos
-        TabOrder = 8
-        OnExit = edValorTotalExit
-        OnKeyDown = edPerc_ImpostoKeyDown
-        OnKeyPress = edNomeUsuariosKeyPress
-      end
-=======
-        Top = 89
-        Width = 145
-        Height = 21
-        DataField = 'ID_TANQUE'
-        DataSource = DM.dsAbastecimentos
-        KeyField = 'ID_TANQUE'
-        ListField = 'NUMERO'
-        ListSource = DM.dsTanques
-        TabOrder = 3
-        OnKeyPress = edNomeUsuariosKeyPress
-      end
-      object cbUsuario: TDBLookupComboBox
-        Left = 357
-        Top = 64
-        Width = 145
-        Height = 21
-        DataField = 'ID_USUARIO'
-        DataSource = DM.dsAbastecimentos
-        KeyField = 'ID_USUARIO'
-        ListField = 'USUARIO'
-        ListSource = DM.dsUsuarios
-        TabOrder = 4
-        OnKeyPress = edNomeUsuariosKeyPress
-      end
-      object edLitros: TDBEdit
-        Left = 158
-        Top = 114
-        Width = 65
-        Height = 21
-        DataField = 'LITROS'
-        DataSource = DM.dsAbastecimentos
-        TabOrder = 5
-        OnKeyPress = edNomeUsuariosKeyPress
-      end
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     end
   end
 end

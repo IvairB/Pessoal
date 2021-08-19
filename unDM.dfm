@@ -24,26 +24,23 @@ object DM: TDM
     Top = 16
   end
   object qryUsuarios: TFDQuery
-    Active = True
+    BeforePost = qryUsuariosBeforePost
     Connection = Con
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpImmediate
     UpdateOptions.GeneratorName = 'gn_usuarios'
     UpdateOptions.AutoIncFields = 'id_usuario'
-<<<<<<< HEAD
-=======
-    UpdateObject = updUsuarios
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     SQL.Strings = (
       'select * from tb_usuarios order by nome')
     Left = 228
     Top = 16
     object qryUsuariosID_USUARIO: TIntegerField
-      AutoGenerateValue = arAutoInc
+      DisplayLabel = 'ID'
       FieldName = 'ID_USUARIO'
       Origin = 'ID_USUARIO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       ReadOnly = True
+      Required = True
     end
     object qryUsuariosNOME: TStringField
       FieldName = 'NOME'
@@ -82,7 +79,7 @@ object DM: TDM
     Top = 16
   end
   object qryTanques: TFDQuery
-    Active = True
+    BeforePost = qryUsuariosBeforePost
     Connection = Con
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpImmediate
@@ -94,10 +91,10 @@ object DM: TDM
     Left = 228
     Top = 120
     object qryTanquesID_TANQUE: TIntegerField
-      AutoGenerateValue = arAutoInc
       FieldName = 'ID_TANQUE'
       Origin = 'ID_TANQUE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object qryTanquesNUMERO: TIntegerField
       FieldName = 'NUMERO'
@@ -105,6 +102,7 @@ object DM: TDM
       Required = True
     end
     object qryTanquesID_COMBUSTIVEL: TIntegerField
+      DisplayLabel = 'COMBUSTIVEL'
       FieldName = 'ID_COMBUSTIVEL'
       LookupKeyFields = 'ID_COMBUSTIVEL'
       LookupResultField = 'TIPO'
@@ -159,7 +157,7 @@ object DM: TDM
     Top = 120
   end
   object qryBombas: TFDQuery
-    Active = True
+    BeforePost = qryUsuariosBeforePost
     Connection = Con
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpImmediate
@@ -171,10 +169,10 @@ object DM: TDM
     Left = 228
     Top = 176
     object qryBombasID_BOMBA: TIntegerField
-      AutoGenerateValue = arAutoInc
       FieldName = 'ID_BOMBA'
       Origin = 'ID_BOMBA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object qryBombasNUMERO: TIntegerField
       FieldName = 'NUMERO'
@@ -182,6 +180,7 @@ object DM: TDM
       Required = True
     end
     object qryBombasID_TANQUE: TIntegerField
+      DisplayLabel = 'TANQUE'
       FieldName = 'ID_TANQUE'
       LookupDataSet = qryTanques
       LookupKeyFields = 'ID_TANQUE'
@@ -211,20 +210,45 @@ object DM: TDM
     Top = 176
   end
   object qryAbastecimentos: TFDQuery
+    BeforePost = qryUsuariosBeforePost
     Connection = Con
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpImmediate
     UpdateOptions.GeneratorName = 'gn_abastecimentos'
     UpdateOptions.AutoIncFields = 'id_abastecimento'
-<<<<<<< HEAD
-    UpdateObject = updAbastecimentos
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
     SQL.Strings = (
       'select * from tb_abastecimento order by data desc, hora desc')
     Left = 228
     Top = 224
-<<<<<<< HEAD
+    object qryAbastecimentosBOMBA: TIntegerField
+      FieldKind = fkLookup
+      FieldName = 'BOMBA'
+      LookupDataSet = qryBombas
+      LookupKeyFields = 'ID_BOMBA'
+      LookupResultField = 'NUMERO'
+      KeyFields = 'ID_BOMBA'
+      Lookup = True
+    end
+    object qryAbastecimentosLITROS: TFMTBCDField
+      FieldName = 'LITROS'
+      Origin = 'LITROS'
+      Required = True
+      Precision = 18
+      Size = 3
+    end
+    object qryAbastecimentosVALOR_TOTAL: TBCDField
+      DisplayLabel = 'VALOR TOTAL'
+      FieldName = 'VALOR_TOTAL'
+      Origin = 'VALOR_TOTAL'
+      Required = True
+      Precision = 18
+    end
+    object qryAbastecimentosID_ABASTECIMENTO: TFDAutoIncField
+      FieldName = 'ID_ABASTECIMENTO'
+      Origin = 'ID_ABASTECIMENTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      IdentityInsert = True
+    end
     object qryAbastecimentosUSUARIO: TStringField
       FieldKind = fkLookup
       FieldName = 'USUARIO'
@@ -235,29 +259,8 @@ object DM: TDM
       Size = 60
       Lookup = True
     end
-    object qryAbastecimentosBOMBA: TIntegerField
-      FieldKind = fkLookup
-      FieldName = 'BOMBA'
-      LookupDataSet = qryBombas
-      LookupKeyFields = 'ID_BOMBA'
-      LookupResultField = 'NUMERO'
-      KeyFields = 'ID_BOMBA'
-      Lookup = True
-    end
-    object qryAbastecimentosID_ABASTECIMENTO: TFDAutoIncField
-      FieldName = 'ID_ABASTECIMENTO'
-      Origin = 'ID_ABASTECIMENTO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      IdentityInsert = True
-=======
-    object qryAbastecimentosID_ABASTECIMENTO: TIntegerField
-      FieldName = 'ID_ABASTECIMENTO'
-      Origin = 'ID_ABASTECIMENTO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
-    end
     object qryAbastecimentosID_BOMBA: TIntegerField
+      DisplayLabel = 'BOMBA'
       FieldName = 'ID_BOMBA'
       Origin = 'ID_BOMBA'
       Required = True
@@ -265,19 +268,11 @@ object DM: TDM
     object qryAbastecimentosID_USUARIO: TIntegerField
       FieldName = 'ID_USUARIO'
       Origin = 'ID_USUARIO'
-<<<<<<< HEAD
       Required = True
     end
     object qryAbastecimentosVALOR_LIQUIDO: TFMTBCDField
       FieldName = 'VALOR_LIQUIDO'
       Origin = 'VALOR_LIQUIDO'
-      Required = True
-      Precision = 18
-      Size = 3
-    end
-    object qryAbastecimentosLITROS: TFMTBCDField
-      FieldName = 'LITROS'
-      Origin = 'LITROS'
       Required = True
       Precision = 18
       Size = 3
@@ -298,12 +293,6 @@ object DM: TDM
       Required = True
       Precision = 18
     end
-    object qryAbastecimentosVALOR_TOTAL: TBCDField
-      FieldName = 'VALOR_TOTAL'
-      Origin = 'VALOR_TOTAL'
-      Required = True
-      Precision = 18
-    end
   end
   object updAbastecimentos: TFDUpdateSQL
     Connection = Con
@@ -316,7 +305,7 @@ object DM: TDM
     Top = 224
   end
   object qryCombustiveis: TFDQuery
-    Active = True
+    BeforePost = qryUsuariosBeforePost
     Connection = Con
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     UpdateOptions.FetchGeneratorsPoint = gpImmediate
@@ -328,10 +317,11 @@ object DM: TDM
     Left = 232
     Top = 72
     object qryCombustiveisID_COMBUSTIVEL: TIntegerField
-      AutoGenerateValue = arAutoInc
+      DisplayLabel = 'ID'
       FieldName = 'ID_COMBUSTIVEL'
       Origin = 'ID_COMBUSTIVEL'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object qryCombustiveisTIPO: TStringField
       FieldName = 'TIPO'
@@ -343,14 +333,14 @@ object DM: TDM
       FieldName = 'VALOR_COMPRA'
       Origin = 'VALOR_COMPRA'
       Required = True
+      DisplayFormat = '0,0000'
       Precision = 18
     end
     object qryCombustiveisVALOR_VENDA: TBCDField
       FieldName = 'VALOR_VENDA'
       Origin = 'VALOR_VENDA'
-=======
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       Required = True
+      DisplayFormat = '0,0000'
       Precision = 18
     end
     object qryCombustiveisPERC_IMPOSTO: TBCDField
@@ -359,7 +349,6 @@ object DM: TDM
       Required = True
       Precision = 18
     end
-<<<<<<< HEAD
   end
   object dsCombustiveis: TDataSource
     DataSet = qryCombustiveis
@@ -398,88 +387,38 @@ object DM: TDM
     object qryAcessoNOME: TStringField
       FieldName = 'NOME'
       Origin = 'NOME'
-=======
-    object qryAbastecimentosVALOR_LIQUIDO: TBCDField
-      FieldName = 'VALOR_LIQUIDO'
-      Origin = 'VALOR_LIQUIDO'
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       Required = True
-      Precision = 18
-      Size = 3
+      Size = 60
     end
-<<<<<<< HEAD
     object qryAcessoUSUARIO: TStringField
       FieldName = 'USUARIO'
       Origin = 'USUARIO'
-=======
-    object qryAbastecimentosLITROS: TBCDField
-      FieldName = 'LITROS'
-      Origin = 'LITROS'
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       Required = True
-      Precision = 18
-      Size = 3
+      Size = 60
     end
-<<<<<<< HEAD
     object qryAcessoSENHA: TStringField
       FieldName = 'SENHA'
       Origin = 'SENHA'
-=======
-    object qryAbastecimentosDATA: TDateField
-      FieldName = 'DATA'
-      Origin = '"DATA"'
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       Required = True
+      Size = 60
     end
-<<<<<<< HEAD
     object qryAcessoATIVO: TStringField
       FieldName = 'ATIVO'
       Origin = 'ATIVO'
-=======
-    object qryAbastecimentosHORA: TTimeField
-      FieldName = 'HORA'
-      Origin = 'HORA'
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
       Required = True
-    end
-    object qryAbastecimentosVALOR_IMPOSTO: TBCDField
-      FieldName = 'VALOR_IMPOSTO'
-      Origin = 'VALOR_IMPOSTO'
-      Required = True
-      Precision = 18
-    end
-    object qryAbastecimentosVALOR_TOTAL: TBCDField
-      FieldName = 'VALOR_TOTAL'
-      Origin = 'VALOR_TOTAL'
-      Required = True
-      Precision = 18
-    end
-    object qryAbastecimentosUSUARIO: TStringField
-      FieldKind = fkLookup
-      FieldName = 'USUARIO'
-      LookupDataSet = qryUsuarios
-      LookupKeyFields = 'ID_USUARIO'
-      LookupResultField = 'USUARIO'
-      KeyFields = 'ID_USUARIO'
-      Size = 60
-      Lookup = True
-    end
-    object qryAbastecimentosBOMBA: TIntegerField
-      FieldKind = fkLookup
-      FieldName = 'BOMBA'
-      LookupDataSet = qryBombas
-      LookupKeyFields = 'ID_BOMBA'
-      LookupResultField = 'NUMERO'
-      KeyFields = 'ID_BOMBA'
-      Lookup = True
+      FixedChar = True
+      Size = 1
     end
   end
   object qryDadosAbastecimento: TFDQuery
     Connection = Con
-<<<<<<< HEAD
     UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
     SQL.Strings = (
-      'select c.*, current_date data, current_time hora'
+      'select c.*, current_date data, current_time hora, '
+      '       (c.perc_imposto / 100 * c.valor_venda) valor_imposto,'
+      
+        '       (c.valor_venda + c.perc_imposto / 100 * c.valor_venda) va' +
+        'lor_venda_imposto       '
       'from tb_combustiveis c'
       '   join tb_tanques t on t.id_combustivel = c.id_combustivel'
       '   join tb_bombas b on b.id_tanque = t.id_tanque'
@@ -537,70 +476,110 @@ object DM: TDM
       ProviderFlags = []
       ReadOnly = True
     end
+    object qryDadosAbastecimentoVALOR_IMPOSTO: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_IMPOSTO'
+      Origin = 'VALOR_IMPOSTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+    end
+    object qryDadosAbastecimentoVALOR_VENDA_IMPOSTO: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_VENDA_IMPOSTO'
+      Origin = 'VALOR_VENDA_IMPOSTO'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+    end
   end
   object dsDadosAbastecimento: TDataSource
     DataSet = qryDadosAbastecimento
     Left = 608
-=======
-    Left = 368
-    Top = 224
-  end
-  object dsAbastecimentos: TDataSource
-    DataSet = qryAbastecimentos
-    Left = 296
-    Top = 224
-  end
-  object qryCombustiveis: TFDQuery
-    Connection = Con
-    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
-    UpdateOptions.FetchGeneratorsPoint = gpImmediate
-    UpdateOptions.GeneratorName = 'gn_combustiveis'
-    UpdateOptions.AutoIncFields = 'id_combustivel'
-    UpdateObject = updCombustiveis
-    SQL.Strings = (
-      'select * from tb_combustiveis order by tipo')
-    Left = 232
     Top = 72
-    object qryCombustiveisID_COMBUSTIVEL: TIntegerField
-      FieldName = 'ID_COMBUSTIVEL'
-      Origin = 'ID_COMBUSTIVEL'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object qryCombustiveisTIPO: TStringField
-      FieldName = 'TIPO'
+  end
+  object qryRelatorioGeral: TFDQuery
+    Connection = Con
+    SQL.Strings = (
+      'select c.tipo combustivel, b.numero bomba, t.numero tanque, '
+      '  a.valor_liquido, a.valor_imposto, a.valor_total,'
+      '  a.data'
+      'from tb_combustiveis c'
+      '   join tb_tanques t on t.id_combustivel = c.id_combustivel'
+      '   join tb_bombas b on b.id_tanque = t.id_tanque'
+      '   join tb_abastecimento a on a.id_bomba = b.id_bomba'
+      ' where a.data between :dataini and :datafin')
+    Left = 504
+    Top = 144
+    ParamData = <
+      item
+        Name = 'DATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 44426d
+      end
+      item
+        Name = 'DATAFIN'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryRelatorioGeralCOMBUSTIVEL: TStringField
+      FieldName = 'COMBUSTIVEL'
       Origin = 'TIPO'
       Required = True
       Size = 60
     end
-    object qryCombustiveisVALOR_COMPRA: TBCDField
-      FieldName = 'VALOR_COMPRA'
-      Origin = 'VALOR_COMPRA'
-      Required = True
+    object qryRelatorioGeralBOMBA: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'BOMBA'
+      Origin = 'NUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryRelatorioGeralTANQUE: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'TANQUE'
+      Origin = 'NUMERO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryRelatorioGeralVALOR_LIQUIDO: TFMTBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_LIQUIDO'
+      Origin = 'VALOR_LIQUIDO'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+      Size = 3
+    end
+    object qryRelatorioGeralVALOR_IMPOSTO: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_IMPOSTO'
+      Origin = 'VALOR_IMPOSTO'
+      ProviderFlags = []
+      ReadOnly = True
       Precision = 18
     end
-    object qryCombustiveisVALOR_VENDA: TBCDField
-      FieldName = 'VALOR_VENDA'
-      Origin = 'VALOR_VENDA'
-      Required = True
+    object qryRelatorioGeralVALOR_TOTAL: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'VALOR_TOTAL'
+      Origin = 'VALOR_TOTAL'
+      ProviderFlags = []
+      ReadOnly = True
       Precision = 18
     end
-    object qryCombustiveisPERC_IMPOSTO: TBCDField
-      FieldName = 'PERC_IMPOSTO'
-      Origin = 'PERC_IMPOSTO'
-      Required = True
-      Precision = 18
+    object qryRelatorioGeralDATA: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
-  object dsCombustiveis: TDataSource
-    DataSet = qryCombustiveis
-    Left = 296
-    Top = 72
-  end
-  object updCombustiveis: TFDUpdateSQL
-    Connection = Con
-    Left = 360
->>>>>>> 2cb6dc3a2f29e34508fd7b2f1d74ad5516b1eb19
-    Top = 72
+  object dsRelatorioGeral: TDataSource
+    DataSet = qryRelatorioGeral
+    Left = 608
+    Top = 144
   end
 end

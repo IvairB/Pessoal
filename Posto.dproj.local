@@ -8,7 +8,13 @@
     <Transaction>2021/08/13 11:19:59.000.440,D:\Posto\unDM.dfm=D:\Posto\Unit1.dfm</Transaction>
     <Transaction>2021/08/13 11:19:59.000.440,D:\Posto\unDM.pas=D:\Posto\Unit1.pas</Transaction>
     <Transaction>2021/08/13 11:52:22.000.079,=D:\Posto\Unit1.pas</Transaction>
-    <Transaction>2021/08/13 13:38:54.000.238,D:\Posto\Unit1.dfm=D:\Posto\unCadastros.dfm</Transaction>
     <Transaction>2021/08/13 13:38:54.000.238,D:\Posto\Unit1.pas=D:\Posto\unCadastros.pas</Transaction>
+    <Transaction>2021/08/13 13:38:54.000.238,D:\Posto\Unit1.dfm=D:\Posto\unCadastros.dfm</Transaction>
+    <Transaction>2021/08/18 22:30:11.000.029,=D:\Posto\unRelatorioGeral.pas</Transaction>
+    <Transaction>2021/08/19 00:24:27.981,=D:\Posto\Unit1.pas</Transaction>
+    <Transaction>2021/08/19 00:24:51.687,D:\Posto\unReports.dfm=D:\Posto\Unit1.dfm</Transaction>
+    <Transaction>2021/08/19 00:24:51.687,D:\Posto\unReports.pas=D:\Posto\Unit1.pas</Transaction>
+    <Transaction>2021/08/19 00:33:56.428,D:\Posto\CHILDWIN.PAS=</Transaction>
+    <Transaction>2021/08/19 01:31:43.711,D:\Posto\unReports.pas=</Transaction>
   </Transactions>
 </BorlandProject>

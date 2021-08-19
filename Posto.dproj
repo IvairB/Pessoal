@@ -94,6 +94,7 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <BT_BuildType>Debug</BT_BuildType>
+        <DCC_UnitSearchPath>D:\Delphi\fortesreport-ce\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -101,9 +102,6 @@
         </DelphiCompile>
         <DCCReference Include="unPrincipal.pas">
             <Form>frmPrincipal</Form>
-        </DCCReference>
-        <DCCReference Include="CHILDWIN.PAS">
-            <Form>MDIChild</Form>
         </DCCReference>
         <DCCReference Include="about.pas">
             <Form>AboutBox</Form>
@@ -115,6 +113,10 @@
         </DCCReference>
         <DCCReference Include="unCadastros.pas">
             <Form>frmCadastros</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="unRelatorioGeral.pas">
+            <Form>frmRelatorioGeral</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">
@@ -171,8 +173,8 @@
                     <VersionInfoKeys Name="Comments"/>
                 </VersionInfoKeys>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
@@ -183,12 +185,6 @@
                 <DeployFile LocalName="Win32\Debug\Posto.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Posto.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="CHILDWIN.PAS" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
